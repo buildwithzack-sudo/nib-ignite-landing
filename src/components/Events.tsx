@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Presentation, Car, Navigation, Trophy } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 
 const events = [
   {
@@ -12,6 +13,7 @@ const events = [
     description: "Platform for innovative students to present ideas in AI and IoT. Create software or hardware-based applications.",
     grades: "Junior (3-6) & Senior (7-12)",
     color: "primary",
+    link: "/events/future-innovators",
   },
   {
     icon: Car,
@@ -20,14 +22,16 @@ const events = [
     description: "Test your bot's ability to navigate race tracks in minimum time while overcoming obstacles. Precision and control are key.",
     grades: "Senior (7-12)",
     color: "secondary",
+    link: "/events/race-o-bot",
   },
   {
     icon: Navigation,
-    title: "Path Finder",
-    category: "Line Follower Robot",
+    title: "Line Follower Robot",
+    category: "Path Finder",
     description: "Flagship event based on line-following and wall-following concepts. Maximum school participation expected.",
     grades: "Junior & Senior",
     color: "primary",
+    link: "/events/line-follower-robot",
   },
   {
     icon: Trophy,
@@ -36,6 +40,7 @@ const events = [
     description: "Witness robots in one-on-one combat to score goals. Build innovative weapons and strategies. Wired bots allowed!",
     grades: "Senior (7-12)",
     color: "secondary",
+    link: "/events/robo-rugby",
   },
 ];
 
@@ -68,7 +73,8 @@ export const Events = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="group h-full bg-card border-border hover:border-primary transition-all duration-300 overflow-hidden">
+              <Link to={event.link}>
+                <Card className="group h-full bg-card border-border hover:border-primary transition-all duration-300 overflow-hidden cursor-pointer">
                 <div className={`h-2 bg-gradient-to-r ${
                   event.color === 'primary' 
                     ? 'from-primary to-primary/50' 
@@ -103,6 +109,7 @@ export const Events = () => {
                   </div>
                 </div>
               </Card>
+              </Link>
             </motion.div>
           ))}
         </div>
