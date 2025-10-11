@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
   CarouselContent,
@@ -38,6 +39,10 @@ const galleryImages = [
 export const Gallery = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  );
 
   return (
     <section className="py-20 md:py-32 bg-muted/30">
@@ -67,6 +72,7 @@ export const Gallery = () => {
               align: "start",
               loop: true,
             }}
+            plugins={[autoplayPlugin.current]}
             className="w-full"
           >
             <CarouselContent>
