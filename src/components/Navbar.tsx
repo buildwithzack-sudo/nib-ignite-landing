@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import nibLogo from "@/assets/nib-logo.svg";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -56,8 +58,13 @@ export const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="default" size="lg" className="glow-primary">
-              Register Soon
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="glow-primary"
+              onClick={() => navigate('/registration')}
+            >
+              Register Now
             </Button>
           </div>
 
@@ -88,8 +95,16 @@ export const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button variant="default" size="lg" className="w-full glow-primary">
-              Register Soon
+            <Button 
+              variant="default" 
+              size="lg" 
+              className="w-full glow-primary"
+              onClick={() => {
+                navigate('/registration');
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              Register Now
             </Button>
           </motion.div>
         )}
