@@ -73,7 +73,7 @@ export const Events = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Link to={event.link}>
+              <Link to={event.link} onClick={() => window.scrollTo(0, 0)}>
                 <Card className="group h-full bg-card border-border hover:border-primary transition-all duration-300 overflow-hidden cursor-pointer">
                 <div className={`h-2 bg-gradient-to-r ${
                   event.color === 'primary' 
