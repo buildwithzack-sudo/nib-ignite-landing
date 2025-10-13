@@ -38,14 +38,14 @@ export const Navbar = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <motion.a
-            href="#"
-            className="flex items-center gap-3"
+          <motion.div
+            className="flex items-center gap-3 cursor-pointer"
             whileHover={{ scale: 1.05 }}
+            onClick={() => navigate('/')}
           >
             <img src={nibLogo} alt="NIB Logo" className="h-12 w-12" />
             <span className="text-xl font-bold text-gradient hidden sm:block">NIB</span>
-          </motion.a>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">

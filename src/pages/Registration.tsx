@@ -27,7 +27,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { indianStates, indianStatesAndCities } from "@/data/indiaData";
-import { Loader2 } from "lucide-react";
+import { Loader2, Upload } from "lucide-react";
+import paymentQR from "@/assets/payment-qr.png";
 
 const formSchema = z.object({
   category: z.enum(["Junior", "Senior"], {
@@ -40,14 +41,17 @@ const formSchema = z.object({
   schoolAddress: z.string().min(5, "School address must be at least 5 characters").max(500, "School address must be less than 500 characters"),
   class: z.string().min(1, "Please enter the class").max(50, "Class must be less than 50 characters"),
   teamLeaderName: z.string().min(2, "Team leader name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
-  member1: z.string().min(2, "Member 1 name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
-  member2: z.string().min(2, "Member 2 name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
-  member3: z.string().min(2, "Member 3 name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
+  member1: z.string().optional(),
+  member2: z.string().optional(),
+  member3: z.string().optional(),
   studentContact: z.string().regex(/^[6-9]\d{9}$/, "Please enter a valid 10-digit mobile number"),
   studentEmail: z.string().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
   mentorName: z.string().min(2, "Mentor name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
   mentorContact: z.string().regex(/^[6-9]\d{9}$/, "Please enter a valid 10-digit mobile number"),
   mentorEmail: z.string().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
+  projectName: z.string().min(2, "Project name must be at least 2 characters").max(200, "Project name must be less than 200 characters"),
+  aboutProject: z.string().min(10, "Project description must be at least 10 characters").max(1000, "Project description must be less than 1000 characters"),
+  paymentScreenshot: z.instanceof(File, { message: "Please upload payment screenshot" }),
   hasCurriculum: z.enum(["Yes", "No"], {
     required_error: "Please select an option",
   }),
@@ -59,6 +63,7 @@ const Registration = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedState, setSelectedState] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedEvent, setSelectedEvent] = useState<string>("");
   const [startTime] = useState(Date.now());
 
   const juniorEvents = ["Junior Future Innovators", "Race-O-Bot"];
@@ -83,6 +88,9 @@ const Registration = () => {
       mentorName: "",
       mentorContact: "",
       mentorEmail: "",
+      projectName: "",
+      aboutProject: "",
+      paymentScreenshot: undefined,
       hasCurriculum: undefined,
     },
   });
@@ -93,23 +101,62 @@ const Registration = () => {
     try {
       const completionTime = Math.floor((Date.now() - startTime) / 1000);
       
+      // Upload payment screenshot first
+      const signedUrlResponse = await fetch("https://api.opnform.com/vapor/signed-storage-url", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          bucket: "",
+          content_type: values.paymentScreenshot.type,
+          expires: "",
+          visibility: "",
+          baseURL: null,
+          headers: {}
+        }),
+      });
+
+      if (!signedUrlResponse.ok) {
+        throw new Error("Failed to get upload URL");
+      }
+
+      const signedUrlData = await signedUrlResponse.json();
+      
+      // Upload the file to the signed URL
+      const uploadResponse = await fetch(signedUrlData.url, {
+        method: "PUT",
+        headers: signedUrlData.headers,
+        body: values.paymentScreenshot,
+      });
+
+      if (!uploadResponse.ok) {
+        throw new Error("Failed to upload payment screenshot");
+      }
+
+      // Construct filename from UUID
+      const uploadedFileName = `${signedUrlData.key.split('/').pop()}_${signedUrlData.uuid}.${values.paymentScreenshot.name.split('.').pop()}`;
+      
       const payload = {
         "2de6b1f2-003d-4909-8855-7e9b3c1aa986": values.category,
+        "ec1241a9-8ab4-4bcd-9724-97bdd8a0d8a8": [uploadedFileName],
         "8d9b254a-4d1b-4b7b-ada7-d073c3d9c167": values.event,
         "eb804168-05c4-4c4d-ad59-485783e830d7": values.state,
         "62edff5e-2685-4a58-a137-5b426ca2b3c2": values.city,
         "2fc256eb-05d8-49fb-bb13-2177d241d4b1": values.schoolName,
-        "69ed9453-40a9-49d7-891e-d86b3dab7730": values.schoolAddress,
         "e8612548-3d85-4e8b-b60a-f6519e513b9b": values.class,
         "a9feba9d-3823-4dd6-9596-cdaeed841506": values.teamLeaderName,
-        "23f5cd57-4610-4cda-b022-932c63518273": values.member1,
-        "2f1e21bc-e155-4af4-9521-76c6936908c6": values.member2,
-        "cf22920b-148f-4d6f-bbf9-51e089a8f884": values.member3,
+        "23f5cd57-4610-4cda-b022-932c63518273": values.member1 || "",
+        "69ed9453-40a9-49d7-891e-d86b3dab7730": values.schoolAddress,
+        "2f1e21bc-e155-4af4-9521-76c6936908c6": values.member2 || "",
+        "cf22920b-148f-4d6f-bbf9-51e089a8f884": values.member3 || "",
         "2e78a470-aad4-4df9-9797-4cc7eeabcb03": values.studentContact,
         "1bd78277-bed5-4a7a-a3bc-6b11bc17fb40": values.studentEmail,
         "c580ad48-1903-4098-a464-36ef0717905a": values.mentorName,
         "3d5c1c67-6282-4f89-9c26-43790e20ccab": values.mentorContact,
         "3c981ea4-ed40-4b59-8a6e-34a35eca92ef": values.mentorEmail,
+        "7bad9a93-4c7a-424b-a577-2155be0f6996": values.projectName,
+        "7acc294f-95e6-492e-9fda-478c0b116aaa": values.aboutProject,
         "9bf2b8f1-3ded-4df0-a7ce-393ffd3f0e64": values.hasCurriculum,
         "completion_time": completionTime,
       };
@@ -148,11 +195,30 @@ const Registration = () => {
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
     form.setValue("event", "");
+    setSelectedEvent("");
   };
 
   const handleStateChange = (value: string) => {
     setSelectedState(value);
     form.setValue("city", "");
+  };
+
+  const handleEventChange = (value: string) => {
+    setSelectedEvent(value);
+  };
+
+  const getEventPrice = () => {
+    if (!selectedEvent) return 0;
+    
+    const eventPrices: { [key: string]: number } = {
+      "Junior Future Innovators": 1000,
+      "Race-O-Bot": 300,
+      "Senior Future Innovators": 1000,
+      "Robo Rugby Championship": 1000,
+      "Line Follower Robot": 1000,
+    };
+    
+    return eventPrices[selectedEvent] || 0;
   };
 
   return (
@@ -222,7 +288,13 @@ const Registration = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Event *</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
+                        <Select 
+                          onValueChange={(value) => {
+                            field.onChange(value);
+                            handleEventChange(value);
+                          }} 
+                          value={field.value}
+                        >
                           <FormControl>
                             <SelectTrigger>
                               <SelectValue placeholder="Select an event" />
@@ -375,7 +447,7 @@ const Registration = () => {
                       name="member1"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Member 1 *</FormLabel>
+                          <FormLabel>Member 1 (Optional)</FormLabel>
                           <FormControl>
                             <Input placeholder="Member 1 name" {...field} />
                           </FormControl>
@@ -389,7 +461,7 @@ const Registration = () => {
                       name="member2"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Member 2 *</FormLabel>
+                          <FormLabel>Member 2 (Optional)</FormLabel>
                           <FormControl>
                             <Input placeholder="Member 2 name" {...field} />
                           </FormControl>
@@ -403,7 +475,7 @@ const Registration = () => {
                       name="member3"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Member 3 *</FormLabel>
+                          <FormLabel>Member 3 (Optional)</FormLabel>
                           <FormControl>
                             <Input placeholder="Member 3 name" {...field} />
                           </FormControl>
@@ -515,6 +587,104 @@ const Registration = () => {
                     />
                   </div>
                 </div>
+
+                {/* Project Information */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Project Details</h3>
+                  
+                  <FormField
+                    control={form.control}
+                    name="projectName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Project Name *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Enter your project name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="aboutProject"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>About the Project *</FormLabel>
+                        <FormControl>
+                          <Textarea 
+                            placeholder="Describe your project in detail" 
+                            className="min-h-[120px]"
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                {/* Payment Section */}
+                {selectedEvent && (
+                  <div className="space-y-6 border border-border rounded-xl p-6 bg-muted/30">
+                    <h3 className="text-lg font-semibold">Payment Information</h3>
+                    
+                    <div className="flex flex-col items-center gap-4">
+                      <div className="text-center">
+                        <p className="text-2xl font-bold text-primary mb-2">
+                          Registration Fee: ₹{getEventPrice()}
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                          Scan the QR code below to make payment
+                        </p>
+                      </div>
+                      
+                      <div className="bg-background p-4 rounded-lg border border-border">
+                        <img 
+                          src={paymentQR} 
+                          alt="Payment QR Code" 
+                          className="w-64 h-auto mx-auto"
+                        />
+                      </div>
+                      
+                      <p className="text-sm text-center text-muted-foreground max-w-md">
+                        After making the payment, please upload the payment screenshot below
+                      </p>
+                    </div>
+
+                    <FormField
+                      control={form.control}
+                      name="paymentScreenshot"
+                      render={({ field: { value, onChange, ...field } }) => (
+                        <FormItem>
+                          <FormLabel>Payment Screenshot *</FormLabel>
+                          <FormControl>
+                            <div className="flex flex-col gap-2">
+                              <Input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => {
+                                  const file = e.target.files?.[0];
+                                  if (file) onChange(file);
+                                }}
+                                {...field}
+                                className="cursor-pointer"
+                              />
+                              {value && (
+                                <p className="text-sm text-muted-foreground flex items-center gap-2">
+                                  <Upload className="w-4 h-4" />
+                                  {value.name}
+                                </p>
+                              )}
+                            </div>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                )}
 
                 {/* Curriculum Question */}
                 <FormField
