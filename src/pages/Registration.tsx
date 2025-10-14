@@ -161,7 +161,7 @@ const Registration = () => {
         "completion_time": completionTime,
       };
 
-      const response = await fetch("https://api.opnform.com/forms/my-form-ptgqjy/answer", {
+      const response = await fetch("https://api.opnform.com/forms/my-form-wjljyy/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
