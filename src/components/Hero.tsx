@@ -85,8 +85,11 @@ export const Hero = () => {
                 size="lg"
                 variant="outline"
                 className="text-lg px-10 py-7 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground font-semibold"
+                onClick={() => {
+                  window.location.href = '/registration';
+                }}
               >
-                Register (Coming Soon)
+                Register Now
               </Button>
             </motion.div>
           </motion.div>

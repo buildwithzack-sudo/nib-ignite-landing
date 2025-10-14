@@ -27,7 +27,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { indianStates, indianStatesAndCities } from "@/data/indiaData";
-import { Loader2, Upload } from "lucide-react";
+import { Loader2, Upload, Download } from "lucide-react";
 import paymentQR from "@/assets/qr-payment.png";
 
 const formSchema = z.object({
@@ -239,6 +239,29 @@ const Registration = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Register your team for National Innovators Battle 2025
             </p>
+            
+            {/* Required Documents */}
+            <div className="mt-8 p-6 bg-card border border-border rounded-xl max-w-2xl mx-auto">
+              <h2 className="text-lg font-semibold mb-4 text-center">Required Documents</h2>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/documents/ConsentForm.pdf"
+                  download
+                  className="flex items-center gap-2 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors border border-primary/20"
+                >
+                  <Download className="w-4 h-4" />
+                  Consent Form
+                </a>
+                <a
+                  href="/documents/Values_Principles.pdf"
+                  download
+                  className="flex items-center gap-2 px-6 py-3 bg-secondary/10 hover:bg-secondary/20 text-secondary rounded-lg transition-colors border border-secondary/20"
+                >
+                  <Download className="w-4 h-4" />
+                  Values & Principles
+                </a>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import nibLogo from "@/assets/nib-logo.svg";
+import nibLogo from "@/assets/nib-logo-original.png";
 
 export const Navbar = () => {
   const navigate = useNavigate();
