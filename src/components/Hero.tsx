@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Animated Background */}
@@ -81,16 +83,14 @@ export const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-10 py-7 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground font-semibold"
-                onClick={() => {
-                  window.location.href = '/registration';
-                }}
-              >
-                Register Now
-              </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-10 py-7 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground font-semibold"
+              onClick={() => navigate('/registration')}
+            >
+              Register Now
+            </Button>
             </motion.div>
           </motion.div>
         </div>
