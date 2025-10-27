@@ -10,6 +10,7 @@ import LineFollowerRobot from "./pages/LineFollowerRobot";
 import RaceOBot from "./pages/RaceOBot";
 import RoboRugby from "./pages/RoboRugby";
 import Registration from "./pages/Registration";
+import ThankYou from "./pages/ThankYou";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/events/future-innovators" element={<FutureInnovators />} />
           <Route path="/events/line-follower-robot" element={<LineFollowerRobot />} />
           <Route path="/events/race-o-bot" element={<RaceOBot />} />

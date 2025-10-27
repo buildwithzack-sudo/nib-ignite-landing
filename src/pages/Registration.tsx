@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -60,6 +61,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const Registration = () => {
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedState, setSelectedState] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
@@ -181,6 +183,9 @@ const Registration = () => {
       form.reset();
       setSelectedState("");
       setSelectedCategory("");
+
+      // Navigate to thank you page
+      navigate('/thank-you');
     } catch (error) {
       toast({
         title: "Error",
