@@ -99,10 +99,10 @@ const Registration = () => {
 
   const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
-    
+
     try {
       const completionTime = Math.floor((Date.now() - startTime) / 1000);
-      
+
       // Upload payment screenshot first
       const signedUrlResponse = await fetch("https://api.opnform.com/vapor/signed-storage-url", {
         method: "POST",
@@ -124,7 +124,7 @@ const Registration = () => {
       }
 
       const signedUrlData = await signedUrlResponse.json();
-      
+
       // Upload the file to the signed URL
       const uploadResponse = await fetch(signedUrlData.url, {
         method: "PUT",
@@ -138,7 +138,7 @@ const Registration = () => {
 
       // Construct filename from UUID
       const uploadedFileName = `${signedUrlData.key.split('/').pop()}_${signedUrlData.uuid}.${values.paymentScreenshot.name.split('.').pop()}`;
-      
+
       const payload = {
         "2de6b1f2-003d-4909-8855-7e9b3c1aa986": values.category,
         "ec1241a9-8ab4-4bcd-9724-97bdd8a0d8a8": [uploadedFileName],
@@ -214,7 +214,7 @@ const Registration = () => {
 
   const getEventPrice = () => {
     if (!selectedEvent) return 0;
-    
+
     const eventPrices: { [key: string]: number } = {
       "Junior Future Innovators": 1000,
       "Race-O-Bot": 300,
@@ -222,14 +222,14 @@ const Registration = () => {
       "Robo Rugby Championship": 1000,
       "Line Follower Robot": 1000,
     };
-    
+
     return eventPrices[selectedEvent] || 0;
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-4xl">
           <motion.div
@@ -244,10 +244,10 @@ const Registration = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Register your team for National Innovators Battle 2025
             </p>
-            
+
             {/* Required Documents */}
             <div className="mt-8 p-6 bg-card border border-border rounded-xl max-w-2xl mx-auto">
-              <h2 className="text-lg font-semibold mb-4 text-center">Required Documents</h2>
+              <h2 className="text-lg font-semibold mb-4 text-center">Download Required Documents</h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="/documents/ConsentForm.pdf"
@@ -265,6 +265,14 @@ const Registration = () => {
                   <Download className="w-4 h-4" />
                   Values & Principles
                 </a>
+              </div>
+
+              {/* Important Notice */}
+              <div className="mt-4 p-4 bg-primary/10 border-l-4 border-primary rounded-r-lg">
+                <p className="text-sm font-semibold text-primary mb-1">⚠️ Important Notice</p>
+                <p className="text-sm text-foreground">
+                  Please bring the <strong>signed copies</strong> of both the Consent Form and Values & Principles form, along with your <strong>Aadhar card</strong>, on the day of the event. This is mandatory for participation.
+                </p>
               </div>
             </div>
           </motion.div>
@@ -316,11 +324,11 @@ const Registration = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Event *</FormLabel>
-                        <Select 
+                        <Select
                           onValueChange={(value) => {
                             field.onChange(value);
                             handleEventChange(value);
-                          }} 
+                          }}
                           value={field.value}
                         >
                           <FormControl>
@@ -440,10 +448,10 @@ const Registration = () => {
                     <FormItem>
                       <FormLabel>School Address *</FormLabel>
                       <FormControl>
-                        <Textarea 
-                          placeholder="Enter complete school address" 
+                        <Textarea
+                          placeholder="Enter complete school address"
                           className="min-h-[80px]"
-                          {...field} 
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage />
@@ -454,7 +462,7 @@ const Registration = () => {
                 {/* Team Members */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold">Team Members</h3>
-                  
+
                   <FormField
                     control={form.control}
                     name="teamLeaderName"
@@ -517,7 +525,7 @@ const Registration = () => {
                 {/* Student Contact */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold">Student Contact Information</h3>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
@@ -526,11 +534,11 @@ const Registration = () => {
                         <FormItem>
                           <FormLabel>Student Contact Number *</FormLabel>
                           <FormControl>
-                            <Input 
-                              type="tel" 
-                              placeholder="10-digit mobile number" 
+                            <Input
+                              type="tel"
+                              placeholder="10-digit mobile number"
                               maxLength={10}
-                              {...field} 
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -545,10 +553,10 @@ const Registration = () => {
                         <FormItem>
                           <FormLabel>Student Email *</FormLabel>
                           <FormControl>
-                            <Input 
-                              type="email" 
-                              placeholder="student@example.com" 
-                              {...field} 
+                            <Input
+                              type="email"
+                              placeholder="student@example.com"
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -561,7 +569,7 @@ const Registration = () => {
                 {/* Mentor Information */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold">Mentor Information</h3>
-                  
+
                   <FormField
                     control={form.control}
                     name="mentorName"
@@ -584,11 +592,11 @@ const Registration = () => {
                         <FormItem>
                           <FormLabel>Mentor Contact Number *</FormLabel>
                           <FormControl>
-                            <Input 
-                              type="tel" 
-                              placeholder="10-digit mobile number" 
+                            <Input
+                              type="tel"
+                              placeholder="10-digit mobile number"
                               maxLength={10}
-                              {...field} 
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -603,10 +611,10 @@ const Registration = () => {
                         <FormItem>
                           <FormLabel>Mentor Email *</FormLabel>
                           <FormControl>
-                            <Input 
-                              type="email" 
-                              placeholder="mentor@example.com" 
-                              {...field} 
+                            <Input
+                              type="email"
+                              placeholder="mentor@example.com"
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
@@ -619,7 +627,7 @@ const Registration = () => {
                 {/* Project Information */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold">Project Details</h3>
-                  
+
                   <FormField
                     control={form.control}
                     name="projectName"
@@ -641,10 +649,10 @@ const Registration = () => {
                       <FormItem>
                         <FormLabel>About the Project *</FormLabel>
                         <FormControl>
-                          <Textarea 
-                            placeholder="Describe your project in detail" 
+                          <Textarea
+                            placeholder="Describe your project in detail"
                             className="min-h-[120px]"
-                            {...field} 
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
@@ -657,7 +665,7 @@ const Registration = () => {
                 {selectedEvent && (
                   <div className="space-y-6 border border-border rounded-xl p-6 bg-muted/30">
                     <h3 className="text-lg font-semibold">Payment Information</h3>
-                    
+
                     <div className="flex flex-col items-center gap-4">
                       <div className="text-center">
                         <p className="text-2xl font-bold text-primary mb-2">
@@ -667,15 +675,15 @@ const Registration = () => {
                           Scan the QR code below to make payment
                         </p>
                       </div>
-                      
+
                       <div className="bg-background p-4 rounded-lg border border-border">
-                        <img 
-                          src={paymentQR} 
-                          alt="Payment QR Code" 
+                        <img
+                          src={paymentQR}
+                          alt="Payment QR Code"
                           className="w-64 h-auto mx-auto"
                         />
                       </div>
-                      
+
                       <p className="text-sm text-center text-muted-foreground max-w-md">
                         After making the payment, please upload the payment screenshot below
                       </p>
@@ -744,9 +752,9 @@ const Registration = () => {
                   )}
                 />
 
-                <Button 
-                  type="submit" 
-                  size="lg" 
+                <Button
+                  type="submit"
+                  size="lg"
                   className="w-full"
                   disabled={isSubmitting}
                 >
