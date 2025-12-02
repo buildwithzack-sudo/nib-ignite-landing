@@ -11,25 +11,25 @@ const events = [
     title: "Future Innovators",
     category: "Exhibition",
     description: "Platform for innovative students to present ideas in AI and IoT. Create software or hardware-based applications.",
-    grades: "Junior (3-6) & Senior (7-12)",
+    grades: "Junior (4-7) & Senior (8-12)",
     color: "primary",
     link: "/events/future-innovators",
   },
   {
     icon: Brain,
-    title: "AI Competition",
+    title: "AI Innovation Challenge",
     category: "Artificial Intelligence",
     description: "Showcase your AI skills and knowledge. Compete in challenges that test your understanding of artificial intelligence concepts and applications.",
-    grades: "Junior (3-6) & Senior (7-12)",
+    grades: "Junior (4-7) & Senior (8-12)",
     color: "secondary",
     link: "/events/ai-competition",
   },
   {
     icon: Trophy,
-    title: "Robo Fight",
+    title: "Robo War",
     category: "Combat & Strategy",
     description: "Witness robots in one-on-one combat. Build innovative weapons and strategies. Wired bots allowed!",
-    grades: "Senior (7-12)",
+    grades: "Senior (8-12)",
     color: "primary",
     link: "/events/robo-fight",
   },
@@ -67,8 +67,8 @@ export const Events = () => {
               <Link to={event.link} onClick={() => window.scrollTo(0, 0)}>
                 <Card className="group h-full bg-card border-border hover:border-primary transition-all duration-300 overflow-hidden cursor-pointer">
                   <div className={`h-2 bg-gradient-to-r ${event.color === 'primary'
-                      ? 'from-primary to-primary/50'
-                      : 'from-secondary to-secondary/50'
+                    ? 'from-primary to-primary/50'
+                    : 'from-secondary to-secondary/50'
                     }`} />
 
                   <div className="p-8">
@@ -80,8 +80,8 @@ export const Events = () => {
                     <div className="mb-4">
                       <h3 className="text-2xl font-bold mb-2 text-foreground">{event.title}</h3>
                       <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${event.color === 'primary'
-                          ? 'bg-primary/20 text-primary'
-                          : 'bg-secondary/20 text-secondary'
+                        ? 'bg-primary/20 text-primary'
+                        : 'bg-secondary/20 text-secondary'
                         }`}>
                         {event.category}
                       </span>

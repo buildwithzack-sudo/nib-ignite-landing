@@ -69,8 +69,8 @@ const Registration = () => {
   const [selectedEvent, setSelectedEvent] = useState<string>("");
   const [startTime] = useState(Date.now());
 
-  const juniorEvents = ["Junior Future Innovators", "Junior AI Competition"];
-  const seniorEvents = ["Senior Future Innovators", "Senior AI Competition", "Robo Fight"];
+  const juniorEvents = ["Junior Future Innovators", "Junior AI Innovation Challenge"];
+  const seniorEvents = ["Senior Future Innovators", "Senior AI Innovation Challenge", "Robo War"];
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -220,10 +220,10 @@ const Registration = () => {
 
     const eventPrices: { [key: string]: number } = {
       "Junior Future Innovators": 1000,
-      "Junior AI Competition": 300,
+      "Junior AI Innovation Challenge": 300,
       "Senior Future Innovators": 1000,
-      "Senior AI Competition": 300,
-      "Robo Fight": 4000,
+      "Senior AI Innovation Challenge": 300,
+      "Robo War": 4000,
     };
 
     return eventPrices[selectedEvent] || 0;
