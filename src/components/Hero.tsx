@@ -47,12 +47,12 @@ export const Hero = () => {
           >
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5 text-primary" />
-              <span className="font-medium text-base">19th November 2025</span>
+              <span className="font-medium text-base">20th December 2025</span>
             </div>
             <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
             <div className="flex items-center gap-2">
               <MapPin className="w-5 h-5 text-secondary" />
-              <span className="font-medium text-base">Rahi Ilawart, Prayagraj, India</span>
+              <span className="font-medium text-base">Seth M.R. Jaipuria School, Gomti Nagar Extension, Lucknow</span>
             </div>
           </motion.div>
 

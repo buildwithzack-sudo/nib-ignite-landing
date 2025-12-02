@@ -53,7 +53,7 @@ const ThankYou = () => {
                 <Calendar className="w-8 h-8 text-primary flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Date</h3>
-                  <p className="text-muted-foreground">19th November 2025</p>
+                  <p className="text-muted-foreground">20th December 2025</p>
                 </div>
               </div>
 
@@ -61,7 +61,7 @@ const ThankYou = () => {
                 <MapPin className="w-8 h-8 text-secondary flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Venue</h3>
-                  <p className="text-muted-foreground">Rahi Ilawart, Prayagraj, India</p>
+                  <p className="text-muted-foreground">Seth M.R. Jaipuria School, Gomti Nagar Extension, Lucknow</p>
                 </div>
               </div>
             </div>

@@ -21,15 +21,15 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 6391214330",
-    href: "tel:+91 6391214330",
+    value: "+91 84290 23685",
+    href: "tel:+918429023685",
     color: "primary",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "100 Alopibagh, Allahabad - 211006",
-    href: "https://maps.google.com/?q=Alopibagh+Allahabad",
+    value: "Seth M.R. Jaipuria School, Gomti Nagar Extension, Lucknow",
+    href: "https://maps.google.com/?q=Seth+M.R.+Jaipuria+School+Gomti+Nagar+Extension+Lucknow",
     color: "secondary",
   },
 ];
@@ -41,7 +41,7 @@ export const Contact = () => {
   return (
     <section id="contact" className="py-20 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card to-background" />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -62,22 +62,20 @@ export const Contact = () => {
             <motion.a
               key={contact.label}
               href={contact.href}
-              target={contact.label === "Website" ? "_blank" : undefined}
-              rel={contact.label === "Website" ? "noopener noreferrer" : undefined}
+              target={contact.label === "Website" || contact.label === "Location" ? "_blank" : undefined}
+              rel={contact.label === "Website" || contact.label === "Location" ? "noopener noreferrer" : undefined}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group block"
             >
               <div className="bg-card border border-border rounded-2xl p-6 h-full text-center hover:border-primary transition-all duration-300 hover:shadow-xl hover:shadow-primary/20">
-                <div className={`mb-4 inline-flex p-4 rounded-full ${
-                  contact.color === 'primary' 
-                    ? 'bg-primary/10 group-hover:bg-primary/20' 
-                    : 'bg-secondary/10 group-hover:bg-secondary/20'
-                } transition-colors`}>
-                  <contact.icon className={`w-6 h-6 ${
-                    contact.color === 'primary' ? 'text-primary' : 'text-secondary'
-                  }`} />
+                <div className={`mb-4 inline-flex p-4 rounded-full ${contact.color === 'primary'
+                  ? 'bg-primary/10 group-hover:bg-primary/20'
+                  : 'bg-secondary/10 group-hover:bg-secondary/20'
+                  } transition-colors`}>
+                  <contact.icon className={`w-6 h-6 ${contact.color === 'primary' ? 'text-primary' : 'text-secondary'
+                    }`} />
                 </div>
                 <h3 className="text-sm font-medium text-muted-foreground mb-2">{contact.label}</h3>
                 <p className="text-foreground font-medium break-words">{contact.value}</p>
@@ -98,13 +96,13 @@ export const Contact = () => {
               Event Venue
             </h3>
             <p className="text-lg text-foreground font-semibold mb-2">
-              Rahi Ilawart Tourist Bungalow Hall
+              Seth M.R. Jaipuria School
             </p>
             <p className="text-muted-foreground mb-4">
-              Civil Lines, Prayagraj, India
+              Gomti Nagar Extension, Lucknow
             </p>
             <p className="text-muted-foreground mb-6">
-              Join us on <span className="text-primary font-semibold">19th November 2025</span> for an unforgettable 
+              Join us on <span className="text-primary font-semibold">20th December 2025</span> for an unforgettable
               experience of innovation, competition, and collaboration.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
