@@ -36,6 +36,7 @@ const formSchema = z.object({
     required_error: "Please select a category",
   }),
   event: z.string().min(1, "Please select an event"),
+  teamName: z.string().min(2, "Team name must be at least 2 characters").max(100, "Team name must be less than 100 characters"),
   state: z.string().min(1, "Please select a state"),
   city: z.string().min(1, "Please select a city"),
   schoolName: z.string().min(2, "School name must be at least 2 characters").max(200, "School name must be less than 200 characters"),
@@ -76,6 +77,7 @@ const Registration = () => {
     defaultValues: {
       category: undefined,
       event: "",
+      teamName: "",
       state: "",
       city: "",
       schoolName: "",
@@ -143,6 +145,7 @@ const Registration = () => {
         "2de6b1f2-003d-4909-8855-7e9b3c1aa986": values.category,
         "ec1241a9-8ab4-4bcd-9724-97bdd8a0d8a8": [uploadedFileName],
         "8d9b254a-4d1b-4b7b-ada7-d073c3d9c167": values.event,
+        "c3ae7c8e-24cf-4433-a01a-250a99bc48f8": values.teamName,
         "eb804168-05c4-4c4d-ad59-485783e830d7": values.state,
         "62edff5e-2685-4a58-a137-5b426ca2b3c2": values.city,
         "2fc256eb-05d8-49fb-bb13-2177d241d4b1": values.schoolName,
@@ -163,7 +166,7 @@ const Registration = () => {
         "completion_time": completionTime,
       };
 
-      const response = await fetch("https://api.opnform.com/forms/my-form-wjljyy/answer", {
+      const response = await fetch("https://api.opnform.com/forms/nib-event-form-9bty5b/answer", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -459,9 +462,23 @@ const Registration = () => {
                   )}
                 />
 
-                {/* Team Members */}
+                {/* Team Information */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Team Members</h3>
+                  <h3 className="text-lg font-semibold">Team Information</h3>
+
+                  <FormField
+                    control={form.control}
+                    name="teamName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Team Name *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Enter your team name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
                   <FormField
                     control={form.control}
