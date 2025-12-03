@@ -60,6 +60,15 @@ const formSchema = z.object({
   hasCurriculum: z.enum(["Yes", "No"], {
     required_error: "Please select an option",
   }),
+}).refine((data) => {
+  // If event is Robo War, participationType must be selected
+  if (data.event.includes("Robo War")) {
+    return data.participationType !== undefined;
+  }
+  return true;
+}, {
+  message: "Please select participation type for Robo War events",
+  path: ["participationType"],
 });
 
 type FormValues = z.infer<typeof formSchema>;
