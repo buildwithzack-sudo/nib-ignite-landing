@@ -36,6 +36,9 @@ const formSchema = z.object({
     required_error: "Please select a category",
   }),
   event: z.string().min(1, "Please select an event"),
+  participationType: z.enum(["Individual", "Team"], {
+    required_error: "Please select participation type",
+  }).optional(),
   teamName: z.string().min(2, "Team name must be at least 2 characters").max(100, "Team name must be less than 100 characters"),
   state: z.string().min(1, "Please select a state"),
   city: z.string().min(1, "Please select a city"),
@@ -69,14 +72,15 @@ const Registration = () => {
   const [selectedEvent, setSelectedEvent] = useState<string>("");
   const [startTime] = useState(Date.now());
 
-  const juniorEvents = ["Junior Future Innovators", "Junior AI Innovation Challenge"];
-  const seniorEvents = ["Senior Future Innovators", "Senior AI Innovation Challenge", "Robo War"];
+  const juniorEvents = ["Junior Future Innovators", "Junior AI Innovation Challenge", "Junior Robo War"];
+  const seniorEvents = ["Senior Future Innovators", "Senior AI Innovation Challenge", "Senior Robo War"];
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       category: undefined,
       event: "",
+      participationType: undefined,
       teamName: "",
       state: "",
       city: "",
@@ -218,12 +222,16 @@ const Registration = () => {
   const getEventPrice = () => {
     if (!selectedEvent) return 0;
 
+    const participationType = form.watch("participationType");
+    const isRoboWar = selectedEvent.includes("Robo War");
+
     const eventPrices: { [key: string]: number } = {
       "Junior Future Innovators": 1000,
       "Junior AI Innovation Challenge": 300,
+      "Junior Robo War": isRoboWar && participationType === "Team" ? 4800 : 4000,
       "Senior Future Innovators": 1000,
       "Senior AI Innovation Challenge": 300,
-      "Robo War": 4000,
+      "Senior Robo War": isRoboWar && participationType === "Team" ? 4800 : 4000,
     };
 
     return eventPrices[selectedEvent] || 0;
@@ -347,6 +355,36 @@ const Registration = () => {
                             ))}
                           </SelectContent>
                         </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                )}
+
+                {/* Participation Type - Only for Robo War */}
+                {selectedEvent && selectedEvent.includes("Robo War") && (
+                  <FormField
+                    control={form.control}
+                    name="participationType"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base">Participation Type *</FormLabel>
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            value={field.value}
+                            className="flex gap-4"
+                          >
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="Individual" id="individual" />
+                              <Label htmlFor="individual">Individual (₹4000)</Label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="Team" id="team" />
+                              <Label htmlFor="team">Team (₹4800)</Label>
+                            </div>
+                          </RadioGroup>
+                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -498,43 +536,64 @@ const Registration = () => {
                     <FormField
                       control={form.control}
                       name="member1"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Member 1 (Optional)</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Member 1 name" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
+                      render={({ field }) => {
+                        const isRoboWarIndividual = selectedEvent?.includes("Robo War") && form.watch("participationType") === "Individual";
+                        return (
+                          <FormItem>
+                            <FormLabel>Member 1 (Optional)</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Member 1 name"
+                                {...field}
+                                disabled={isRoboWarIndividual}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        );
+                      }}
                     />
 
                     <FormField
                       control={form.control}
                       name="member2"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Member 2 (Optional)</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Member 2 name" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
+                      render={({ field }) => {
+                        const isRoboWarIndividual = selectedEvent?.includes("Robo War") && form.watch("participationType") === "Individual";
+                        return (
+                          <FormItem>
+                            <FormLabel>Member 2 (Optional)</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Member 2 name"
+                                {...field}
+                                disabled={isRoboWarIndividual}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        );
+                      }}
                     />
 
                     <FormField
                       control={form.control}
                       name="member3"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Member 3 (Optional)</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Member 3 name" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
+                      render={({ field }) => {
+                        const isRoboWarIndividual = selectedEvent?.includes("Robo War") && form.watch("participationType") === "Individual";
+                        return (
+                          <FormItem>
+                            <FormLabel>Member 3 (Optional)</FormLabel>
+                            <FormControl>
+                              <Input
+                                placeholder="Member 3 name"
+                                {...field}
+                                disabled={isRoboWarIndividual}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        );
+                      }}
                     />
                   </div>
                 </div>
