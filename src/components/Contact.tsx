@@ -102,7 +102,7 @@ export const Contact = () => {
               Gomti Nagar Extension, Lucknow
             </p>
             <p className="text-muted-foreground mb-6">
-              Join us on <span className="text-primary font-semibold">20th December 2025</span> for an unforgettable
+              Join us on <span className="text-primary font-semibold">20th December 2026</span> for an unforgettable
               experience of innovation, competition, and collaboration.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

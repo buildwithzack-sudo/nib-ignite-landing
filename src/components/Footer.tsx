@@ -24,7 +24,7 @@ export const Footer = () => {
               <span className="text-xl font-bold text-gradient">NIB India</span>
             </motion.a>
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              © 2025 National Innovators Battle • All Rights Reserved
+              © 2026 National Innovators Battle • All Rights Reserved
             </p>
           </div>
 

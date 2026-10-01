@@ -28,12 +28,12 @@ export default function FutureInnovators() {
             <Card className="p-6">
               <Calendar className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Registration Deadline</h3>
-              <p className="text-muted-foreground">November 13th, 2025</p>
+              <p className="text-muted-foreground">October 26th, 2026</p>
             </Card>
             <Card className="p-6">
               <Trophy className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Finale</h3>
-              <p className="text-muted-foreground">November 19th, 2025</p>
+              <p className="text-muted-foreground">December 20th, 2026</p>
             </Card>
             <Card className="p-6">
               <Users className="h-8 w-8 text-primary mb-3" />
@@ -168,7 +168,7 @@ export default function FutureInnovators() {
           <Card className="p-8 bg-primary/5 border-primary">
             <h2 className="text-2xl font-bold mb-4">Ready to Participate?</h2>
             <p className="text-muted-foreground mb-6">
-              Register your team now and showcase your innovative solutions at NIB 2025!
+              Register your team now and showcase your innovative solutions at NIB 2026!
             </p>
             <Button size="lg" className="w-full md:w-auto">
               Register (Coming Soon)

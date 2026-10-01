@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -16,6 +16,17 @@ export const Hero = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-5xl mx-auto">
+          {/* Last Date Badge */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6 shadow-sm"
+          >
+            <Clock className="w-4 h-4" />
+            <span>Registration Open • Last Date: 26th October 2026</span>
+          </motion.div>
+
           {/* Title */}
           <motion.h1
             initial={{ y: 50, opacity: 0 }}
@@ -25,7 +36,7 @@ export const Hero = () => {
           >
             <span className="text-gradient">National Innovators Battle</span>
             <br />
-            <span className="text-4xl sm:text-5xl md:text-6xl text-foreground mt-2 block">2025</span>
+            <span className="text-4xl sm:text-5xl md:text-6xl text-foreground mt-2 block">2026</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -43,11 +54,16 @@ export const Hero = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12 text-muted-foreground"
+            className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 mb-12 text-muted-foreground"
           >
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5 text-primary" />
-              <span className="font-medium text-base">20th December 2025</span>
+              <span className="font-medium text-base">20th December 2026</span>
+            </div>
+            <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
+            <div className="flex items-center gap-2">
+              <Clock className="w-5 h-5 text-primary" />
+              <span className="font-medium text-base">Last Date: <span className="text-foreground font-semibold">26th October 2026</span></span>
             </div>
             <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
             <div className="flex items-center gap-2">

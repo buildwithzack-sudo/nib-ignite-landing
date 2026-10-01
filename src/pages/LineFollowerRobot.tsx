@@ -28,12 +28,12 @@ export default function LineFollowerRobot() {
             <Card className="p-6">
               <Calendar className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Registration Deadline</h3>
-              <p className="text-muted-foreground">November 13th, 2025</p>
+              <p className="text-muted-foreground">October 26th, 2026</p>
             </Card>
             <Card className="p-6">
               <Trophy className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Finale</h3>
-              <p className="text-muted-foreground">November 19th, 2025</p>
+              <p className="text-muted-foreground">December 20th, 2026</p>
             </Card>
             <Card className="p-6">
               <Users className="h-8 w-8 text-primary mb-3" />
@@ -45,7 +45,7 @@ export default function LineFollowerRobot() {
           <Card className="p-8 mb-8">
             <h2 className="text-3xl font-bold mb-6">Structure</h2>
             <p className="text-muted-foreground mb-6">
-              The competition will be held in two stages followed by the final presentations at National Innovators Battle (NIB), 2025.
+              The competition will be held in two stages followed by the final presentations at National Innovators Battle (NIB), 2026.
             </p>
             <div className="space-y-4">
               <div className="border-l-4 border-primary pl-4">
@@ -203,7 +203,7 @@ export default function LineFollowerRobot() {
           <Card className="p-8 bg-primary/5 border-primary">
             <h2 className="text-2xl font-bold mb-4">Ready to Participate?</h2>
             <p className="text-muted-foreground mb-6">
-              Build your Line Follower Robot and compete at NIB 2025!
+              Build your Line Follower Robot and compete at NIB 2026!
             </p>
             <Button size="lg" className="w-full md:w-auto">
               Register (Coming Soon)

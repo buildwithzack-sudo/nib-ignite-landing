@@ -60,15 +60,6 @@ const formSchema = z.object({
   hasCurriculum: z.enum(["Yes", "No"], {
     required_error: "Please select an option",
   }),
-}).refine((data) => {
-  // If event is Robo War, participationType must be selected
-  if (data.event.includes("Robo War")) {
-    return data.participationType !== undefined;
-  }
-  return true;
-}, {
-  message: "Please select participation type for Robo War events",
-  path: ["participationType"],
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -81,8 +72,8 @@ const Registration = () => {
   const [selectedEvent, setSelectedEvent] = useState<string>("");
   const [startTime] = useState(Date.now());
 
-  const juniorEvents = ["Junior Future Innovators", "Junior AI Innovation Challenge", "Junior Robo War"];
-  const seniorEvents = ["Senior Future Innovators", "Senior AI Innovation Challenge", "Senior Robo War"];
+  const juniorEvents = ["Junior Future Innovators", "Junior AI Innovation Challenge"];
+  const seniorEvents = ["Senior Future Innovators", "Senior AI Innovation Challenge"];
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -231,16 +222,11 @@ const Registration = () => {
   const getEventPrice = () => {
     if (!selectedEvent) return 0;
 
-    const participationType = form.watch("participationType");
-    const isRoboWar = selectedEvent.includes("Robo War");
-
     const eventPrices: { [key: string]: number } = {
       "Junior Future Innovators": 1000,
       "Junior AI Innovation Challenge": 300,
-      "Junior Robo War": isRoboWar && participationType === "Team" ? 4800 : 4000,
       "Senior Future Innovators": 1000,
       "Senior AI Innovation Challenge": 300,
-      "Senior Robo War": isRoboWar && participationType === "Team" ? 4800 : 4000,
     };
 
     return eventPrices[selectedEvent] || 0;
@@ -262,7 +248,10 @@ const Registration = () => {
               Event <span className="text-gradient">Registration</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Register your team for National Innovators Battle 2025
+              Register your team for National Innovators Battle 2026
+            </p>
+            <p className="mt-3 inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold">
+              Last Date of Registration: 26th October 2026
             </p>
 
             {/* Required Documents */}
@@ -370,35 +359,6 @@ const Registration = () => {
                   />
                 )}
 
-                {/* Participation Type - Only for Robo War */}
-                {selectedEvent && selectedEvent.includes("Robo War") && (
-                  <FormField
-                    control={form.control}
-                    name="participationType"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-base">Participation Type *</FormLabel>
-                        <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            value={field.value}
-                            className="flex gap-4"
-                          >
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="Individual" id="individual" />
-                              <Label htmlFor="individual">Individual (₹4000)</Label>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="Team" id="team" />
-                              <Label htmlFor="team">Team (₹4800)</Label>
-                            </div>
-                          </RadioGroup>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                )}
 
                 {/* State Selection */}
                 <FormField
@@ -545,64 +505,52 @@ const Registration = () => {
                     <FormField
                       control={form.control}
                       name="member1"
-                      render={({ field }) => {
-                        const isRoboWarIndividual = selectedEvent?.includes("Robo War") && form.watch("participationType") === "Individual";
-                        return (
-                          <FormItem>
-                            <FormLabel>Member 1 (Optional)</FormLabel>
-                            <FormControl>
-                              <Input
-                                placeholder="Member 1 name"
-                                {...field}
-                                disabled={isRoboWarIndividual}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        );
-                      }}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Member 1 (Optional)</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Member 1 name"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
 
                     <FormField
                       control={form.control}
                       name="member2"
-                      render={({ field }) => {
-                        const isRoboWarIndividual = selectedEvent?.includes("Robo War") && form.watch("participationType") === "Individual";
-                        return (
-                          <FormItem>
-                            <FormLabel>Member 2 (Optional)</FormLabel>
-                            <FormControl>
-                              <Input
-                                placeholder="Member 2 name"
-                                {...field}
-                                disabled={isRoboWarIndividual}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        );
-                      }}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Member 2 (Optional)</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Member 2 name"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
 
                     <FormField
                       control={form.control}
                       name="member3"
-                      render={({ field }) => {
-                        const isRoboWarIndividual = selectedEvent?.includes("Robo War") && form.watch("participationType") === "Individual";
-                        return (
-                          <FormItem>
-                            <FormLabel>Member 3 (Optional)</FormLabel>
-                            <FormControl>
-                              <Input
-                                placeholder="Member 3 name"
-                                {...field}
-                                disabled={isRoboWarIndividual}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        );
-                      }}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Member 3 (Optional)</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Member 3 name"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
                     />
                   </div>
                 </div>

@@ -33,7 +33,7 @@ const ThankYou = () => {
               Registration <span className="text-gradient">Successful!</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Thank you for registering for National Innovators Battle 2025.
+              Thank you for registering for National Innovators Battle 2026.
               Your registration has been submitted successfully and we'll contact you soon.
             </p>
           </motion.div>
@@ -53,7 +53,7 @@ const ThankYou = () => {
                 <Calendar className="w-8 h-8 text-primary flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Date</h3>
-                  <p className="text-muted-foreground">20th December 2025</p>
+                  <p className="text-muted-foreground">20th December 2026</p>
                 </div>
               </div>
 
