@@ -33,7 +33,7 @@ const ThankYou = () => {
               Registration <span className="text-gradient">Successful!</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Thank you for registering for National Innovators Battle 2025.
+              Thank you for registering for National Innovators Battle 2026.
               Your registration has been submitted successfully and we'll contact you soon.
             </p>
           </motion.div>
@@ -52,27 +52,29 @@ const ThankYou = () => {
               <div className="flex items-center gap-4 p-6 bg-muted/30 rounded-xl">
                 <Calendar className="w-8 h-8 text-primary flex-shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">Date</h3>
-                  <p className="text-muted-foreground">20th December 2025</p>
+                  <h3 className="font-semibold text-lg mb-1">Key Dates</h3>
+                  <p className="text-sm text-muted-foreground">Results Declaration: <strong className="text-foreground">1st Nov 2026</strong></p>
+                  <p className="text-sm text-muted-foreground">Physical Finale: <strong className="text-primary">29th Nov 2026</strong></p>
                 </div>
               </div>
 
               <div className="flex items-center gap-4 p-6 bg-muted/30 rounded-xl">
                 <MapPin className="w-8 h-8 text-secondary flex-shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">Venue</h3>
-                  <p className="text-muted-foreground">Seth M.R. Jaipuria School, Gomti Nagar Extension, Lucknow</p>
+                  <h3 className="font-semibold text-lg mb-1">Finale Venue</h3>
+                  <p className="text-foreground font-medium">Lucknow, Uttar Pradesh</p>
+                  <p className="text-muted-foreground text-xs">(In-person event for shortlisted teams)</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 p-6 bg-primary/5 border border-primary/20 rounded-xl">
               <h3 className="font-semibold text-lg mb-2 text-primary">What's Next?</h3>
-              <ul className="text-muted-foreground space-y-2">
-                <li>• We'll review your registration and contact you within 48 hours</li>
-                <li>• Payment confirmation will be sent via email</li>
-                <li>• Event guidelines and schedule will be shared closer to the date</li>
-                <li>• Join our community for updates and preparation materials</li>
+              <ul className="text-muted-foreground space-y-2 text-sm leading-relaxed">
+                <li>• <strong>Round 1 Idea Evaluation:</strong> The jury will review all online idea submissions.</li>
+                <li>• <strong>Results Announced:</strong> Shortlisted teams will be declared on <strong>1st November 2026</strong>.</li>
+                <li>• <strong>Round 2 Finale (Lucknow):</strong> Qualified teams will bring their physical working project to Lucknow on <strong>29th November 2026</strong> for live demonstration.</li>
+                <li>• Event guidelines, venue address, and reporting schedules will be sent via email.</li>
               </ul>
             </div>
           </motion.div>

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Presentation, Trophy, Brain } from "lucide-react";
+import { Presentation, Brain } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
@@ -23,15 +23,6 @@ const events = [
     grades: "Junior (4-7) & Senior (8-12)",
     color: "secondary",
     link: "/events/ai-competition",
-  },
-  {
-    icon: Trophy,
-    title: "Robo War",
-    category: "Combat & Strategy",
-    description: "Witness robots in one-on-one combat. Build innovative weapons and strategies. Wired bots allowed!",
-    grades: "Senior (8-12)",
-    color: "primary",
-    link: "/events/robo-fight",
   },
 ];
 
@@ -56,7 +47,7 @@ export const Events = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
           {events.map((event, index) => (
             <motion.div
               key={event.title}

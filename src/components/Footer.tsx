@@ -24,7 +24,7 @@ export const Footer = () => {
               <span className="text-xl font-bold text-gradient">NIB India</span>
             </motion.a>
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              © 2025 National Innovators Battle • All Rights Reserved
+              © 2026 National Innovators Battle • All Rights Reserved
             </p>
           </div>
 
@@ -35,6 +35,9 @@ export const Footer = () => {
             </a>
             <a href="#events" className="text-muted-foreground hover:text-foreground transition-colors">
               Events
+            </a>
+            <a href="#timeline" className="text-muted-foreground hover:text-foreground transition-colors">
+              Timeline
             </a>
             <a href="#rewards" className="text-muted-foreground hover:text-foreground transition-colors">
               Rewards

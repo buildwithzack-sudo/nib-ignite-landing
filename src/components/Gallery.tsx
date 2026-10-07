@@ -25,7 +25,7 @@ import event10 from "@/assets/gallery/event-10.jpeg";
 
 const galleryImages = [
   { src: event1, alt: "Robo Rugby competition arena" },
-  { src: event2, alt: "NIB event participants with Robo War display" },
+  { src: event2, alt: "NIB event participants with robotics display" },
   { src: event3, alt: "Robot demonstration at NIB event" },
   { src: event4, alt: "Robo Rugby robots in action" },
   { src: event5, alt: "Line Follower Robot competition arena" },

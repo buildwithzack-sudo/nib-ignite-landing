@@ -21,6 +21,7 @@ export const Navbar = () => {
   const navLinks = [
     { label: "About", href: "#about" },
     { label: "Events", href: "#events" },
+    { label: "Timeline", href: "#timeline" },
     { label: "Rewards", href: "#rewards" },
     { label: "Contact", href: "#contact" },
   ];
