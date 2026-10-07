@@ -57,7 +57,7 @@ const formSchema = z.object({
   projectName: z.string().min(2, "Problem statement must be at least 2 characters").max(200, "Problem statement must be less than 200 characters"),
   aboutProject: z.string().min(10, "Please describe the problem your project is solving (at least 10 characters)").max(1000, "Description must be less than 1000 characters"),
   scalability: z.string().optional(),
-  projectImage: z.instanceof(File).optional(),
+  projectImage: z.instanceof(File, { message: "Please upload an actual project photo or an AI-generated image" }),
   paymentScreenshot: z.instanceof(File, { message: "Please upload payment screenshot" }),
   hasCurriculum: z.enum(["Yes", "No"], {
     required_error: "Please select an option",
@@ -724,7 +724,7 @@ const Registration = () => {
                     name="projectImage"
                     render={({ field: { value, onChange, ...field } }) => (
                       <FormItem>
-                        <FormLabel>Project Image</FormLabel>
+                        <FormLabel>Project Image (Actual Photo or AI-Generated) *</FormLabel>
                         <FormControl>
                           <div className="flex flex-col gap-2">
                             <Input
@@ -755,7 +755,7 @@ const Registration = () => {
                           </div>
                         </FormControl>
                         <FormDescription>
-                          Upload a photo, sketch, or schematic diagram of your project (Max 10MB).
+                          Upload either a photo of your actual working project/prototype, or an AI-generated image visualizing your project idea (Max 10MB).
                         </FormDescription>
                         <FormMessage />
                       </FormItem>
