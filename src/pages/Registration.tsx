@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -28,7 +29,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { indianStates, indianStatesAndCities } from "@/data/indiaData";
-import { Loader2, Upload, Download } from "lucide-react";
+import { Loader2, Upload } from "lucide-react";
 import paymentQR from "@/assets/payment_qr.png";
 
 const formSchema = z.object({
@@ -48,18 +49,27 @@ const formSchema = z.object({
   teamLeaderName: z.string().min(2, "Team leader name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
   member1: z.string().optional(),
   member2: z.string().optional(),
-  member3: z.string().optional(),
   studentContact: z.string().regex(/^[6-9]\d{9}$/, "Please enter a valid 10-digit mobile number"),
   studentEmail: z.string().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
   mentorName: z.string().min(2, "Mentor name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
   mentorContact: z.string().regex(/^[6-9]\d{9}$/, "Please enter a valid 10-digit mobile number"),
   mentorEmail: z.string().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
-  projectName: z.string().min(2, "Project name must be at least 2 characters").max(200, "Project name must be less than 200 characters"),
-  aboutProject: z.string().min(10, "Project description must be at least 10 characters").max(1000, "Project description must be less than 1000 characters"),
+  projectName: z.string().min(2, "Problem statement must be at least 2 characters").max(200, "Problem statement must be less than 200 characters"),
+  aboutProject: z.string().min(10, "Please describe the problem your project is solving (at least 10 characters)").max(1000, "Description must be less than 1000 characters"),
+  scalability: z.string().optional(),
+  projectImage: z.instanceof(File).optional(),
   paymentScreenshot: z.instanceof(File, { message: "Please upload payment screenshot" }),
   hasCurriculum: z.enum(["Yes", "No"], {
     required_error: "Please select an option",
   }),
+}).superRefine((data, ctx) => {
+  if (data.category === "Senior" && (!data.scalability || data.scalability.trim().length < 5)) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: "Please explain how you would scale or release this project in the market",
+      path: ["scalability"],
+    });
+  }
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -90,7 +100,6 @@ const Registration = () => {
       teamLeaderName: "",
       member1: "",
       member2: "",
-      member3: "",
       studentContact: "",
       studentEmail: "",
       mentorName: "",
@@ -98,6 +107,8 @@ const Registration = () => {
       mentorEmail: "",
       projectName: "",
       aboutProject: "",
+      scalability: "",
+      projectImage: undefined,
       paymentScreenshot: undefined,
       hasCurriculum: undefined,
     },
@@ -109,45 +120,57 @@ const Registration = () => {
     try {
       const completionTime = Math.floor((Date.now() - startTime) / 1000);
 
-      // Upload payment screenshot first
-      const signedUrlResponse = await fetch("https://api.opnform.com/vapor/signed-storage-url", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          bucket: "",
-          content_type: values.paymentScreenshot.type,
-          expires: "",
-          visibility: "",
-          baseURL: null,
-          headers: {}
-        }),
-      });
+      // Helper function to upload file to OpnForm Vapor storage
+      const uploadFileToVapor = async (file: File) => {
+        const signedUrlResponse = await fetch("https://api.opnform.com/vapor/signed-storage-url", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            bucket: "",
+            content_type: file.type || "application/octet-stream",
+            expires: "",
+            visibility: "",
+            baseURL: null,
+            headers: {},
+          }),
+        });
 
-      if (!signedUrlResponse.ok) {
-        throw new Error("Failed to get upload URL");
+        if (!signedUrlResponse.ok) {
+          throw new Error(`Failed to get upload URL for ${file.name}`);
+        }
+
+        const signedUrlData = await signedUrlResponse.json();
+
+        // Upload the file to the signed URL
+        const uploadResponse = await fetch(signedUrlData.url, {
+          method: "PUT",
+          headers: signedUrlData.headers,
+          body: file,
+        });
+
+        if (!uploadResponse.ok) {
+          throw new Error(`Failed to upload ${file.name}`);
+        }
+
+        // Construct filename from UUID
+        const fileExt = file.name.split(".").pop() || "png";
+        return `${signedUrlData.key.split("/").pop()}_${signedUrlData.uuid}.${fileExt}`;
+      };
+
+      // Upload payment screenshot
+      const uploadedPaymentFileName = await uploadFileToVapor(values.paymentScreenshot);
+
+      // Upload project image if provided
+      let uploadedProjectImageFileName: string | null = null;
+      if (values.projectImage) {
+        uploadedProjectImageFileName = await uploadFileToVapor(values.projectImage);
       }
 
-      const signedUrlData = await signedUrlResponse.json();
-
-      // Upload the file to the signed URL
-      const uploadResponse = await fetch(signedUrlData.url, {
-        method: "PUT",
-        headers: signedUrlData.headers,
-        body: values.paymentScreenshot,
-      });
-
-      if (!uploadResponse.ok) {
-        throw new Error("Failed to upload payment screenshot");
-      }
-
-      // Construct filename from UUID
-      const uploadedFileName = `${signedUrlData.key.split('/').pop()}_${signedUrlData.uuid}.${values.paymentScreenshot.name.split('.').pop()}`;
-
-      const payload = {
+      const payload: Record<string, any> = {
         "2de6b1f2-003d-4909-8855-7e9b3c1aa986": values.category,
-        "ec1241a9-8ab4-4bcd-9724-97bdd8a0d8a8": [uploadedFileName],
+        "ec1241a9-8ab4-4bcd-9724-97bdd8a0d8a8": [uploadedPaymentFileName],
         "8d9b254a-4d1b-4b7b-ada7-d073c3d9c167": values.event,
         "c3ae7c8e-24cf-4433-a01a-250a99bc48f8": values.teamName,
         "eb804168-05c4-4c4d-ad59-485783e830d7": values.state,
@@ -158,7 +181,6 @@ const Registration = () => {
         "23f5cd57-4610-4cda-b022-932c63518273": values.member1 || "",
         "69ed9453-40a9-49d7-891e-d86b3dab7730": values.schoolAddress,
         "2f1e21bc-e155-4af4-9521-76c6936908c6": values.member2 || "",
-        "cf22920b-148f-4d6f-bbf9-51e089a8f884": values.member3 || "",
         "2e78a470-aad4-4df9-9797-4cc7eeabcb03": values.studentContact,
         "1bd78277-bed5-4a7a-a3bc-6b11bc17fb40": values.studentEmail,
         "c580ad48-1903-4098-a464-36ef0717905a": values.mentorName,
@@ -169,6 +191,14 @@ const Registration = () => {
         "9bf2b8f1-3ded-4df0-a7ce-393ffd3f0e64": values.hasCurriculum,
         "completion_time": completionTime,
       };
+
+      if (uploadedProjectImageFileName) {
+        payload["6338385c-3465-49ae-893b-7e39e638eed6"] = [uploadedProjectImageFileName];
+      }
+
+      if (values.scalability) {
+        payload["999cd92b-c4b5-4fe7-a6c6-f6ba8e827145"] = values.scalability;
+      }
 
       const response = await fetch("https://api.opnform.com/forms/nib-event-form-9bty5b/answer", {
         method: "POST",
@@ -208,6 +238,10 @@ const Registration = () => {
     setSelectedCategory(value);
     form.setValue("event", "");
     setSelectedEvent("");
+    if (value !== "Senior") {
+      form.setValue("scalability", "");
+      form.clearErrors("scalability");
+    }
   };
 
   const handleStateChange = (value: string) => {
@@ -260,37 +294,6 @@ const Registration = () => {
               <span className="px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs sm:text-sm font-semibold">
                 Round 2 Finale: 29th November 2026 (Lucknow)
               </span>
-            </div>
-
-            {/* Required Documents */}
-            <div className="mt-8 p-6 bg-card border border-border rounded-xl max-w-2xl mx-auto">
-              <h2 className="text-lg font-semibold mb-4 text-center">Download Required Documents</h2>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/documents/ConsentForm.pdf"
-                  download
-                  className="flex items-center gap-2 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors border border-primary/20"
-                >
-                  <Download className="w-4 h-4" />
-                  Consent Form
-                </a>
-                <a
-                  href="/documents/Values_Principles.pdf"
-                  download
-                  className="flex items-center gap-2 px-6 py-3 bg-secondary/10 hover:bg-secondary/20 text-secondary rounded-lg transition-colors border border-secondary/20"
-                >
-                  <Download className="w-4 h-4" />
-                  Values & Principles
-                </a>
-              </div>
-
-              {/* Important Notice */}
-              <div className="mt-4 p-4 bg-primary/10 border-l-4 border-primary rounded-r-lg">
-                <p className="text-sm font-semibold text-primary mb-1">⚠️ Important Selection & Event Guidelines</p>
-                <p className="text-sm text-foreground leading-relaxed">
-                  Round 1 is an <strong>online idea submission</strong>. The evaluation panel will review all submissions and declare results on <strong>1st November 2026</strong>. Only the selected teams will advance to Round 2 and must bring their <strong>physical working project</strong>, signed consent forms, and Aadhar cards to the physical finale in <strong>Lucknow on 29th November 2026</strong>.
-                </p>
-              </div>
             </div>
           </motion.div>
 
@@ -509,7 +512,7 @@ const Registration = () => {
                     )}
                   />
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="member1"
@@ -543,29 +546,12 @@ const Registration = () => {
                         </FormItem>
                       )}
                     />
-
-                    <FormField
-                      control={form.control}
-                      name="member3"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Member 3 (Optional)</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Member 3 name"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
                   </div>
                 </div>
 
-                {/* Student Contact */}
+                {/* Team Leader Contact */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Student Contact Information</h3>
+                  <h3 className="text-lg font-semibold">Team Leader Contact Information</h3>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <FormField
@@ -573,7 +559,7 @@ const Registration = () => {
                       name="studentContact"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Student Contact Number *</FormLabel>
+                          <FormLabel>Team Leader Contact Number *</FormLabel>
                           <FormControl>
                             <Input
                               type="tel"
@@ -592,11 +578,11 @@ const Registration = () => {
                       name="studentEmail"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Student Email *</FormLabel>
+                          <FormLabel>Team Leader Email *</FormLabel>
                           <FormControl>
                             <Input
                               type="email"
-                              placeholder="student@example.com"
+                              placeholder="leader@example.com"
                               {...field}
                             />
                           </FormControl>
@@ -677,9 +663,9 @@ const Registration = () => {
                     name="projectName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Project Name *</FormLabel>
+                        <FormLabel>Problem Statement *</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter your project / idea title" {...field} />
+                          <Input placeholder="Enter your problem statement" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -691,14 +677,86 @@ const Registration = () => {
                     name="aboutProject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>About the Project / Idea Description *</FormLabel>
+                        <FormLabel>Which Problem is Your Project Solving? *</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Describe your project idea in detail (Problem statement, proposed innovation, technical stack, and expected impact). The jury will evaluate this for Round 1 shortlisting."
+                            placeholder="Describe the specific problem your project addresses, your proposed innovation, and how it solves the issue. The jury will evaluate this for Round 1 shortlisting."
                             className="min-h-[130px]"
                             {...field}
                           />
                         </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {selectedCategory === "Senior" && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <FormField
+                        control={form.control}
+                        name="scalability"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>How would you scale this project or bring it to market? *</FormLabel>
+                            <FormControl>
+                              <Textarea
+                                placeholder="Explain your plan to scale production, reach target users, or release this project into the market."
+                                className="min-h-[110px]"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormDescription>
+                              Senior Category: Explain how this idea can be expanded and commercialized beyond a prototype.
+                            </FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </motion.div>
+                  )}
+
+                  <FormField
+                    control={form.control}
+                    name="projectImage"
+                    render={({ field: { value, onChange, ...field } }) => (
+                      <FormItem>
+                        <FormLabel>Project Image</FormLabel>
+                        <FormControl>
+                          <div className="flex flex-col gap-2">
+                            <Input
+                              type="file"
+                              accept="image/*"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) onChange(file);
+                              }}
+                              {...field}
+                              className="cursor-pointer"
+                            />
+                            {value && (
+                              <div className="flex items-center justify-between text-sm text-muted-foreground bg-muted/40 px-3 py-1.5 rounded-md">
+                                <span className="flex items-center gap-2 truncate">
+                                  <Upload className="w-4 h-4 shrink-0" />
+                                  {value.name}
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={() => onChange(undefined)}
+                                  className="text-xs text-destructive hover:underline shrink-0 ml-2"
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        </FormControl>
+                        <FormDescription>
+                          Upload a photo, sketch, or schematic diagram of your project (Max 10MB).
+                        </FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}
