@@ -33,7 +33,7 @@ export default function LineFollowerRobot() {
             <Card className="p-6">
               <Trophy className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Finale</h3>
-              <p className="text-muted-foreground">December 20th, 2026</p>
+              <p className="text-muted-foreground">November 29th, 2026</p>
             </Card>
             <Card className="p-6">
               <Users className="h-8 w-8 text-primary mb-3" />

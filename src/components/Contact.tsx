@@ -27,9 +27,9 @@ const contactInfo = [
   },
   {
     icon: MapPin,
-    label: "Location",
-    value: "Seth M.R. Jaipuria School, Gomti Nagar Extension, Lucknow",
-    href: "https://maps.google.com/?q=Seth+M.R.+Jaipuria+School+Gomti+Nagar+Extension+Lucknow",
+    label: "Finale Venue",
+    value: "Lucknow, Uttar Pradesh",
+    href: "https://maps.google.com/?q=Lucknow+Uttar+Pradesh",
     color: "secondary",
   },
 ];
@@ -93,17 +93,16 @@ export const Contact = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-xl" />
           <div className="relative bg-card border-2 border-primary/50 rounded-3xl p-8 md:p-12 text-center">
             <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gradient">
-              Event Venue
+              Round 2 Grand Finale Venue
             </h3>
-            <p className="text-lg text-foreground font-semibold mb-2">
-              Seth M.R. Jaipuria School
+            <p className="text-xl text-foreground font-semibold mb-2">
+              Lucknow, Uttar Pradesh
             </p>
-            <p className="text-muted-foreground mb-4">
-              Gomti Nagar Extension, Lucknow
+            <p className="text-sm text-muted-foreground mb-4">
+              Physical event venue in Lucknow will be notified directly to shortlisted teams
             </p>
             <p className="text-muted-foreground mb-6">
-              Join us on <span className="text-primary font-semibold">20th December 2026</span> for an unforgettable
-              experience of innovation, competition, and collaboration.
+              Join us on <span className="text-primary font-semibold">29th November 2026</span> in Lucknow where teams selected from Round 1 will bring their physical working projects to compete!
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a

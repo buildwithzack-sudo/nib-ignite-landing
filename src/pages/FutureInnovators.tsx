@@ -27,37 +27,37 @@ export default function FutureInnovators() {
           <div className="grid md:grid-cols-3 gap-4 mb-12">
             <Card className="p-6">
               <Calendar className="h-8 w-8 text-primary mb-3" />
-              <h3 className="font-semibold mb-2">Registration Deadline</h3>
+              <h3 className="font-semibold mb-2">Round 1 Deadline</h3>
               <p className="text-muted-foreground">October 26th, 2026</p>
             </Card>
             <Card className="p-6">
               <Trophy className="h-8 w-8 text-primary mb-3" />
-              <h3 className="font-semibold mb-2">Finale</h3>
-              <p className="text-muted-foreground">December 20th, 2026</p>
+              <h3 className="font-semibold mb-2">Round 2 Finale</h3>
+              <p className="text-muted-foreground">November 29th, 2026</p>
             </Card>
             <Card className="p-6">
               <Users className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Categories</h3>
-              <p className="text-muted-foreground">Junior (3-6) & Senior (7-12)</p>
+              <p className="text-muted-foreground">Junior (4-7) & Senior (8-12)</p>
             </Card>
           </div>
 
           <Card className="p-8 mb-8">
             <h2 className="text-3xl font-bold mb-6">Structure</h2>
             <p className="text-muted-foreground mb-6">
-              The competition will be held in two stages followed by the final presentations at National Innovators Battle (NIB).
+              The competition will be held in two stages: an online idea submission round followed by the in-person Grand Finale in Lucknow.
             </p>
             <div className="space-y-4">
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 1 – Live Project Presentation</h3>
+                <h3 className="font-bold text-xl mb-2">Round 1 – Online Idea Submission (Deadline: Oct 26, Results: Nov 1)</h3>
                 <p className="text-muted-foreground">
-                  Teams describe their problem statement, proposed solution, background, and potential impact at their School event.
+                  Teams submit their problem statement, proposed solution, and technology online. Selection to the next round is purely based on the idea.
                 </p>
               </div>
               <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 2 – Detailed Report & Working Prototype</h3>
+                <h3 className="font-bold text-xl mb-2">Round 2 – Physical Finale in Lucknow (November 29th, 2026)</h3>
                 <p className="text-muted-foreground">
-                  Shortlisted teams present their project, highlighting the design, functionality, scalability, and viability of their idea.
+                  Shortlisted teams travel to Lucknow to bring and showcase their physical working project and working prototype before judges.
                 </p>
               </div>
               <div className="border-l-4 border-primary pl-4">

@@ -36,6 +36,9 @@ export const Footer = () => {
             <a href="#events" className="text-muted-foreground hover:text-foreground transition-colors">
               Events
             </a>
+            <a href="#timeline" className="text-muted-foreground hover:text-foreground transition-colors">
+              Timeline
+            </a>
             <a href="#rewards" className="text-muted-foreground hover:text-foreground transition-colors">
               Rewards
             </a>

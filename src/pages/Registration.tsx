@@ -250,9 +250,17 @@ const Registration = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Register your team for National Innovators Battle 2026
             </p>
-            <p className="mt-3 inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold">
-              Last Date of Registration: 26th October 2026
-            </p>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto">
+              <span className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-semibold">
+                Round 1 Online Submission: Last Date 26th October 2026
+              </span>
+              <span className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs sm:text-sm font-semibold">
+                Results: 1st November 2026
+              </span>
+              <span className="px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs sm:text-sm font-semibold">
+                Round 2 Finale: 29th November 2026 (Lucknow)
+              </span>
+            </div>
 
             {/* Required Documents */}
             <div className="mt-8 p-6 bg-card border border-border rounded-xl max-w-2xl mx-auto">
@@ -278,9 +286,9 @@ const Registration = () => {
 
               {/* Important Notice */}
               <div className="mt-4 p-4 bg-primary/10 border-l-4 border-primary rounded-r-lg">
-                <p className="text-sm font-semibold text-primary mb-1">⚠️ Important Notice</p>
-                <p className="text-sm text-foreground">
-                  Please bring the <strong>signed copies</strong> of both the Consent Form and Values & Principles form, along with your <strong>Aadhar card</strong>, on the day of the event. This is mandatory for participation.
+                <p className="text-sm font-semibold text-primary mb-1">⚠️ Important Selection & Event Guidelines</p>
+                <p className="text-sm text-foreground leading-relaxed">
+                  Round 1 is an <strong>online idea submission</strong>. The evaluation panel will review all submissions and declare results on <strong>1st November 2026</strong>. Only the selected teams will advance to Round 2 and must bring their <strong>physical working project</strong>, signed consent forms, and Aadhar cards to the physical finale in <strong>Lucknow on 29th November 2026</strong>.
                 </p>
               </div>
             </div>
@@ -659,7 +667,10 @@ const Registration = () => {
 
                 {/* Project Information */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Project Details</h3>
+                  <div>
+                    <h3 className="text-lg font-semibold">Round 1: Project Idea Submission</h3>
+                    <p className="text-sm text-muted-foreground">Teams are evaluated and selected for the Lucknow finale based on this idea submission.</p>
+                  </div>
 
                   <FormField
                     control={form.control}
@@ -668,7 +679,7 @@ const Registration = () => {
                       <FormItem>
                         <FormLabel>Project Name *</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter your project name" {...field} />
+                          <Input placeholder="Enter your project / idea title" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -680,11 +691,11 @@ const Registration = () => {
                     name="aboutProject"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>About the Project *</FormLabel>
+                        <FormLabel>About the Project / Idea Description *</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Describe your project in detail"
-                            className="min-h-[120px]"
+                            placeholder="Describe your project idea in detail (Problem statement, proposed innovation, technical stack, and expected impact). The jury will evaluate this for Round 1 shortlisting."
+                            className="min-h-[130px]"
                             {...field}
                           />
                         </FormControl>
