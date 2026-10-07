@@ -257,13 +257,13 @@ const Registration = () => {
     if (!selectedEvent) return 0;
 
     const eventPrices: { [key: string]: number } = {
-      "Junior Future Innovators": 1000,
-      "Junior AI Innovation Challenge": 300,
-      "Senior Future Innovators": 1000,
-      "Senior AI Innovation Challenge": 300,
+      "Junior Future Innovators": 100,
+      "Junior AI Innovation Challenge": 100,
+      "Senior Future Innovators": 100,
+      "Senior AI Innovation Challenge": 100,
     };
 
-    return eventPrices[selectedEvent] || 0;
+    return eventPrices[selectedEvent] || 100;
   };
 
   return (
