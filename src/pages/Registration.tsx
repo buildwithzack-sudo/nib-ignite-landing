@@ -30,7 +30,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { indianStates, indianStatesAndCities } from "@/data/indiaData";
 import { Loader2, Upload } from "lucide-react";
-import paymentQR from "@/assets/100-Rs-QR.jpeg";
+import paymentQR from "@/assets/vigyan-qr.png";
 
 const formSchema = z.object({
   category: z.enum(["Junior", "Senior"], {
