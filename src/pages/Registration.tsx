@@ -319,16 +319,36 @@ const Registration = () => {
                             handleCategoryChange(value);
                           }}
                           value={field.value}
-                          className="flex gap-4"
+                          className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg"
                         >
-                          <div className="flex items-center space-x-2">
+                          <Label
+                            htmlFor="junior"
+                            className={`flex items-center space-x-3 p-3.5 rounded-xl border transition-all cursor-pointer font-normal ${
+                              field.value === "Junior"
+                                ? "border-primary bg-primary/10 shadow-sm"
+                                : "border-border bg-card hover:bg-muted/40"
+                            }`}
+                          >
                             <RadioGroupItem value="Junior" id="junior" />
-                            <Label htmlFor="junior">Junior</Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
+                            <div className="flex flex-col">
+                              <span className="font-semibold text-foreground text-sm">Junior</span>
+                              <span className="text-xs text-muted-foreground">Class 4th to 7th</span>
+                            </div>
+                          </Label>
+                          <Label
+                            htmlFor="senior"
+                            className={`flex items-center space-x-3 p-3.5 rounded-xl border transition-all cursor-pointer font-normal ${
+                              field.value === "Senior"
+                                ? "border-primary bg-primary/10 shadow-sm"
+                                : "border-border bg-card hover:bg-muted/40"
+                            }`}
+                          >
                             <RadioGroupItem value="Senior" id="senior" />
-                            <Label htmlFor="senior">Senior</Label>
-                          </div>
+                            <div className="flex flex-col">
+                              <span className="font-semibold text-foreground text-sm">Senior</span>
+                              <span className="text-xs text-muted-foreground">Class 8th to 12th</span>
+                            </div>
+                          </Label>
                         </RadioGroup>
                       </FormControl>
                       <FormMessage />
