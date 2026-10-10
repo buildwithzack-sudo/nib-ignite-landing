@@ -3,9 +3,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import FutureInnovators from "./pages/FutureInnovators";
+import AICompetition from "./pages/AICompetition";
 import LineFollowerRobot from "./pages/LineFollowerRobot";
 import RaceOBot from "./pages/RaceOBot";
 import RoboRugby from "./pages/RoboRugby";
@@ -20,11 +22,13 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/events/future-innovators" element={<FutureInnovators />} />
+          <Route path="/events/ai-competition" element={<AICompetition />} />
           <Route path="/events/line-follower-robot" element={<LineFollowerRobot />} />
           <Route path="/events/race-o-bot" element={<RaceOBot />} />
           <Route path="/events/robo-rugby" element={<RoboRugby />} />
