@@ -270,28 +270,28 @@ const Registration = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <div className="pt-24 sm:pt-32 pb-16 sm:pb-20 px-3 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-8 sm:mb-12"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-3 sm:mb-4">
               Event <span className="text-gradient">Registration</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
               Register your team for National Innovators Battle 2026
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto">
-              <span className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-semibold">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto px-2">
+              <span className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-semibold text-center">
                 Round 1 Online Submission: Last Date 26th October 2026
               </span>
-              <span className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs sm:text-sm font-semibold">
+              <span className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs sm:text-sm font-semibold text-center">
                 Results: 1st November 2026
               </span>
-              <span className="px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs sm:text-sm font-semibold">
+              <span className="px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs sm:text-sm font-semibold text-center">
                 Round 2 Finale: 29th November 2026 (Lucknow)
               </span>
             </div>
@@ -301,7 +301,7 @@ const Registration = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-card border border-border rounded-2xl p-8 md:p-12"
+            className="bg-card border border-border rounded-2xl p-4 sm:p-8 md:p-12 shadow-xl"
           >
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

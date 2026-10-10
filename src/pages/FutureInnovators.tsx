@@ -1,15 +1,20 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Users, Trophy, AlertCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, ArrowRight } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export default function FutureInnovators() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Navbar />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16">
         <Link to="/">
-          <Button variant="ghost" className="mb-8">
+          <Button variant="ghost" className="mb-6 hover:bg-muted">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Button>
@@ -165,17 +170,27 @@ export default function FutureInnovators() {
             </div>
           </Card>
 
-          <Card className="p-8 bg-primary/5 border-primary">
+          <Card className="p-6 sm:p-8 bg-primary/5 border-primary">
             <h2 className="text-2xl font-bold mb-4">Ready to Participate?</h2>
             <p className="text-muted-foreground mb-6">
               Register your team now and showcase your innovative solutions at NIB 2026!
             </p>
-            <Button size="lg" className="w-full md:w-auto">
-              Register (Coming Soon)
+            <Button
+              size="lg"
+              className="w-full sm:w-auto glow-primary font-semibold"
+              onClick={() => {
+                navigate("/registration");
+                window.scrollTo(0, 0);
+              }}
+            >
+              Register Now
+              <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </Card>
         </motion.div>
       </div>
+
+      <Footer />
     </div>
   );
 }

@@ -21,10 +21,12 @@ export const Hero = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6 shadow-sm"
+            className="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-semibold mb-6 shadow-sm max-w-full"
           >
-            <Clock className="w-4 h-4" />
-            <span>Round 1: Online Idea Submission • Last Date: 26th October 2026</span>
+            <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+            <span className="truncate sm:overflow-visible">
+              Round 1 Idea Submission Deadline: <strong className="text-foreground">26th Oct 2026</strong>
+            </span>
           </motion.div>
 
           {/* Title */}
@@ -32,11 +34,10 @@ export const Hero = () => {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl sm:text-6xl md:text-8xl font-bold mb-6"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4 sm:mb-6"
           >
             <span className="text-gradient">National Innovators Battle</span>
-            <br />
-            <span className="text-4xl sm:text-5xl md:text-6xl text-foreground mt-2 block">2026</span>
+            <span className="text-3xl sm:text-5xl md:text-6xl text-foreground mt-2 block font-extrabold">2026</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -44,7 +45,7 @@ export const Hero = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-8 max-w-3xl mx-auto font-light"
+            className="text-base sm:text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto font-light leading-relaxed px-2"
           >
             A National Platform for Future Innovators in Technology and Robotics
           </motion.p>
@@ -54,9 +55,9 @@ export const Hero = () => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="max-w-3xl mx-auto mb-10 grid grid-cols-1 md:grid-cols-2 gap-4 text-left"
+            className="max-w-3xl mx-auto mb-8 sm:mb-10 grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 text-left"
           >
-            <div className="p-4 rounded-2xl bg-card/70 backdrop-blur-md border border-primary/30 shadow-md">
+            <div className="p-4 sm:p-5 rounded-2xl bg-card/80 backdrop-blur-md border border-primary/30 shadow-md">
               <div className="flex items-center justify-between mb-2">
                 <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-primary font-bold text-xs tracking-wider uppercase">
                   Round 1 • Online
@@ -64,12 +65,12 @@ export const Hero = () => {
                 <span className="text-xs text-primary font-semibold">Results: 1st Nov</span>
               </div>
               <h4 className="font-bold text-foreground text-base mb-1">Online Idea Submission</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 Submit your project idea online by <strong className="text-foreground">26th October</strong>. Teams are evaluated and selected purely based on their idea.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-card/70 backdrop-blur-md border border-secondary/30 shadow-md">
+            <div className="p-4 sm:p-5 rounded-2xl bg-card/80 backdrop-blur-md border border-secondary/30 shadow-md">
               <div className="flex items-center justify-between mb-2">
                 <span className="px-2.5 py-0.5 rounded-full bg-secondary/20 text-secondary font-bold text-xs tracking-wider uppercase">
                   Round 2 • Physical
@@ -77,7 +78,7 @@ export const Hero = () => {
                 <span className="text-xs text-secondary font-semibold">Lucknow</span>
               </div>
               <h4 className="font-bold text-foreground text-base mb-1">Grand Finale on 29th Nov</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 Selected teams from Round 1 travel to <strong className="text-foreground">Lucknow on 29th November</strong> to showcase their physical working project.
               </p>
             </div>
@@ -88,21 +89,21 @@ export const Hero = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-6 mb-12 text-muted-foreground"
+            className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-2.5 sm:gap-6 mb-8 sm:mb-12 text-muted-foreground text-sm sm:text-base"
           >
             <div className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-primary" />
-              <span className="font-medium text-base">Round 1 Deadline: <span className="text-foreground font-semibold">26th Oct 2026</span></span>
+              <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+              <span className="font-medium">Round 1 Deadline: <span className="text-foreground font-semibold">26th Oct 2026</span></span>
             </div>
             <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
             <div className="flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-primary" />
-              <span className="font-medium text-base">Finale: <span className="text-foreground font-semibold">29th Nov 2026</span></span>
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+              <span className="font-medium">Finale: <span className="text-foreground font-semibold">29th Nov 2026</span></span>
             </div>
             <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
             <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-secondary" />
-              <span className="font-medium text-base">Lucknow (Physical Event)</span>
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
+              <span className="font-medium">Lucknow (Physical Event)</span>
             </div>
           </motion.div>
 
@@ -111,32 +112,34 @@ export const Hero = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-6 relative z-10 w-full max-w-sm sm:max-w-none mx-auto"
           >
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="w-full sm:w-auto"
             >
               <Button
                 size="lg"
-                className="text-lg px-10 py-7 glow-primary group font-semibold"
+                className="w-full sm:w-auto h-12 sm:h-14 text-base sm:text-lg px-8 sm:px-10 glow-primary group font-semibold cursor-pointer"
                 onClick={() => {
                   document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
                 Learn More
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
             
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="w-full sm:w-auto"
             >
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-10 py-7 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground font-semibold"
+                className="w-full sm:w-auto h-12 sm:h-14 text-base sm:text-lg px-8 sm:px-10 border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground font-semibold cursor-pointer"
                 onClick={() => navigate('/registration')}
               >
                 Register Now
