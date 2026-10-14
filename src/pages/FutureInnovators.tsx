@@ -33,7 +33,7 @@ export default function FutureInnovators() {
             <Card className="p-6">
               <Calendar className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Round 1 Deadline</h3>
-              <p className="text-muted-foreground">October 26th, 2026</p>
+              <p className="text-muted-foreground">November 5th, 2026</p>
             </Card>
             <Card className="p-6">
               <Trophy className="h-8 w-8 text-primary mb-3" />
@@ -54,7 +54,7 @@ export default function FutureInnovators() {
             </p>
             <div className="space-y-4">
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 1 – Online Idea Submission (Deadline: Oct 26, Results: Nov 1)</h3>
+                <h3 className="font-bold text-xl mb-2">Round 1 – Online Idea Submission (Deadline: Nov 5, Results: Nov 7)</h3>
                 <p className="text-muted-foreground">
                   Teams submit their problem statement, proposed solution, and technology online. Selection to the next round is purely based on the idea.
                 </p>

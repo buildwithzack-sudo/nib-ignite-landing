@@ -25,7 +25,7 @@ export const Hero = () => {
           >
             <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
             <span className="truncate sm:overflow-visible">
-              Round 1 Idea Submission Deadline: <strong className="text-foreground">26th Oct 2026</strong>
+              Round 1 Idea Submission Deadline: <strong className="text-foreground">5th Nov 2026</strong>
             </span>
           </motion.div>
 
@@ -62,11 +62,11 @@ export const Hero = () => {
                 <span className="px-2.5 py-0.5 rounded-full bg-primary/20 text-primary font-bold text-xs tracking-wider uppercase">
                   Round 1 • Online
                 </span>
-                <span className="text-xs text-primary font-semibold">Results: 1st Nov</span>
+                <span className="text-xs text-primary font-semibold">Results: 7th Nov</span>
               </div>
               <h4 className="font-bold text-foreground text-base mb-1">Online Idea Submission</h4>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Submit your project idea online by <strong className="text-foreground">26th October</strong>. Teams are evaluated and selected purely based on their idea.
+                Submit your project idea online by <strong className="text-foreground">5th November</strong>. Teams are evaluated and selected purely based on their idea.
               </p>
             </div>
 
@@ -93,7 +93,7 @@ export const Hero = () => {
           >
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-              <span className="font-medium">Round 1 Deadline: <span className="text-foreground font-semibold">26th Oct 2026</span></span>
+              <span className="font-medium">Round 1 Deadline: <span className="text-foreground font-semibold">5th Nov 2026</span></span>
             </div>
             <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
             <div className="flex items-center gap-2">

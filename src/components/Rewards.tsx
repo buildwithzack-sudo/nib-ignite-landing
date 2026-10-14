@@ -7,7 +7,7 @@ const rewards = [
   {
     icon: Trophy,
     title: "Cash Prizes",
-    amount: "Upto ₹10,000",
+    amount: "Upto ₹25,000",
     description: "Substantial cash rewards for winners across all categories",
     color: "primary",
   },
