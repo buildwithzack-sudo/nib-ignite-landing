@@ -52,7 +52,7 @@ export const Navbar = () => {
     { label: "About", href: "#about", icon: Info, subtitle: "What is NIB" },
     { label: "Events", href: "#events", icon: Trophy, subtitle: "Competitions & details" },
     { label: "Timeline", href: "#timeline", icon: Calendar, subtitle: "Roadmap & schedule" },
-    { label: "Rewards", href: "#rewards", icon: Award, subtitle: "Prizes up to ₹10,000" },
+    { label: "Rewards", href: "#rewards", icon: Award, subtitle: "Prizes up to ₹25,000" },
     { label: "Contact", href: "#contact", icon: Mail, subtitle: "Get in touch" },
   ];
 
@@ -251,7 +251,7 @@ export const Navbar = () => {
               {/* Event Quick Notice */}
               <div className="pt-2 pb-1 border-t border-border/40 text-center">
                 <p className="text-[11px] text-muted-foreground">
-                  Round 1 Online Deadline: <span className="text-primary font-semibold">26th Oct 2026</span>
+                  Round 1 Online Deadline: <span className="text-primary font-semibold">5th Nov 2026</span>
                   <br />
                   Grand Finale: <span className="text-secondary font-semibold">29th Nov 2026 (Lucknow)</span>
                 </p>

@@ -21,8 +21,8 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 84290 23685",
-    href: "tel:+918429023685",
+    value: "+91 75054 19580",
+    href: "tel:+917505419580",
     color: "primary",
   },
   {

@@ -286,10 +286,10 @@ const Registration = () => {
             </p>
             <div className="mt-4 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto px-2">
               <span className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-semibold text-center">
-                Round 1 Online Submission: Last Date 26th October 2026
+                Round 1 Online Submission: Last Date 5th November 2026
               </span>
               <span className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs sm:text-sm font-semibold text-center">
-                Results: 1st November 2026
+                Results: 7th November 2026
               </span>
               <span className="px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs sm:text-sm font-semibold text-center">
                 Round 2 Finale: 29th November 2026 (Lucknow)
