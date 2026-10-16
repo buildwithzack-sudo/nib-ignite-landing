@@ -323,11 +323,10 @@ const Registration = () => {
                         >
                           <Label
                             htmlFor="junior"
-                            className={`flex items-center space-x-3 p-3.5 rounded-xl border transition-all cursor-pointer font-normal ${
-                              field.value === "Junior"
-                                ? "border-primary bg-primary/10 shadow-sm"
-                                : "border-border bg-card hover:bg-muted/40"
-                            }`}
+                            className={`flex items-center space-x-3 p-3.5 rounded-xl border transition-all cursor-pointer font-normal ${field.value === "Junior"
+                              ? "border-primary bg-primary/10 shadow-sm"
+                              : "border-border bg-card hover:bg-muted/40"
+                              }`}
                           >
                             <RadioGroupItem value="Junior" id="junior" />
                             <div className="flex flex-col">
@@ -337,11 +336,10 @@ const Registration = () => {
                           </Label>
                           <Label
                             htmlFor="senior"
-                            className={`flex items-center space-x-3 p-3.5 rounded-xl border transition-all cursor-pointer font-normal ${
-                              field.value === "Senior"
-                                ? "border-primary bg-primary/10 shadow-sm"
-                                : "border-border bg-card hover:bg-muted/40"
-                            }`}
+                            className={`flex items-center space-x-3 p-3.5 rounded-xl border transition-all cursor-pointer font-normal ${field.value === "Senior"
+                              ? "border-primary bg-primary/10 shadow-sm"
+                              : "border-border bg-card hover:bg-muted/40"
+                              }`}
                           >
                             <RadioGroupItem value="Senior" id="senior" />
                             <div className="flex flex-col">
@@ -683,9 +681,9 @@ const Registration = () => {
                     name="projectName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Problem Statement *</FormLabel>
+                        <FormLabel>Project Name *</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter your problem statement" {...field} />
+                          <Input placeholder="Enter your project name" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
