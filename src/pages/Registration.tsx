@@ -25,11 +25,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
 import { indianStates, indianStatesAndCities } from "@/data/indiaData";
-import { Loader2, Upload } from "lucide-react";
+import { Check, ChevronsUpDown, Loader2, Upload } from "lucide-react";
 import paymentQR from "@/assets/vigyan-qr.png";
 
 const formSchema = z.object({
@@ -80,6 +93,8 @@ const Registration = () => {
   const [selectedState, setSelectedState] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedEvent, setSelectedEvent] = useState<string>("");
+  const [cityOpen, setCityOpen] = useState(false);
+  const [citySearch, setCitySearch] = useState("");
   const [startTime] = useState(Date.now());
 
   const juniorEvents = ["Junior Future Innovators", "Junior AI Innovation Challenge"];
@@ -220,6 +235,8 @@ const Registration = () => {
       form.reset();
       setSelectedState("");
       setSelectedCategory("");
+      setCityOpen(false);
+      setCitySearch("");
 
       // Navigate to thank you page
       navigate('/thank-you');
@@ -247,6 +264,7 @@ const Registration = () => {
   const handleStateChange = (value: string) => {
     setSelectedState(value);
     form.setValue("city", "");
+    setCitySearch("");
   };
 
   const handleEventChange = (value: string) => {
@@ -426,26 +444,117 @@ const Registration = () => {
                   <FormField
                     control={form.control}
                     name="city"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>City *</FormLabel>
-                        <Select onValueChange={field.onChange} value={field.value}>
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select your city" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent className="max-h-[300px]">
-                            {indianStatesAndCities[selectedState]?.map((city) => (
-                              <SelectItem key={city} value={city}>
-                                {city}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                    render={({ field }) => {
+                      const cities = indianStatesAndCities[selectedState] || [];
+                      return (
+                        <FormItem className="flex flex-col">
+                          <FormLabel>City / District *</FormLabel>
+                          <Popover open={cityOpen} onOpenChange={setCityOpen}>
+                            <PopoverTrigger asChild>
+                              <FormControl>
+                                <Button
+                                  type="button"
+                                  variant="outline"
+                                  role="combobox"
+                                  aria-expanded={cityOpen}
+                                  className="w-full justify-between font-normal bg-background/50 h-10 border-input hover:bg-background/80"
+                                >
+                                  <span className={field.value ? "text-foreground truncate" : "text-muted-foreground"}>
+                                    {field.value || "Search & select district or city"}
+                                  </span>
+                                  <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                </Button>
+                              </FormControl>
+                            </PopoverTrigger>
+                            <PopoverContent
+                              className="w-[var(--radix-popover-trigger-width,340px)] min-w-[280px] p-0 shadow-2xl z-50"
+                              align="start"
+                            >
+                              <Command>
+                                <CommandInput
+                                  placeholder="Type to search district or city..."
+                                  onValueChange={setCitySearch}
+                                />
+                                <CommandList>
+                                  <CommandEmpty className="py-4 px-3 text-center text-sm">
+                                    <p className="text-muted-foreground text-xs mb-2">No matching district found</p>
+                                    {citySearch.trim() && (
+                                      <Button
+                                        type="button"
+                                        variant="outline"
+                                        size="sm"
+                                        className="w-full text-xs font-medium border-primary/40 hover:bg-primary/10 text-primary"
+                                        onClick={() => {
+                                          field.onChange(citySearch.trim());
+                                          setCityOpen(false);
+                                        }}
+                                      >
+                                        + Use "{citySearch.trim()}" as city
+                                      </Button>
+                                    )}
+                                  </CommandEmpty>
+
+                                  {field.value && !cities.includes(field.value) && (
+                                    <CommandGroup heading="Selected Custom City">
+                                      <CommandItem
+                                        value={field.value}
+                                        onSelect={() => {
+                                          setCityOpen(false);
+                                        }}
+                                      >
+                                        <Check className="mr-2 h-4 w-4 opacity-100 text-primary" />
+                                        <span>{field.value} (Custom)</span>
+                                      </CommandItem>
+                                    </CommandGroup>
+                                  )}
+
+                                  <CommandGroup heading={`Districts & Cities in ${selectedState} (${cities.length})`}>
+                                    {cities.map((city) => (
+                                      <CommandItem
+                                        key={city}
+                                        value={city}
+                                        onSelect={() => {
+                                          field.onChange(city);
+                                          setCityOpen(false);
+                                        }}
+                                      >
+                                        <Check
+                                          className={`mr-2 h-4 w-4 ${
+                                            field.value === city ? "opacity-100 text-primary" : "opacity-0"
+                                          }`}
+                                        />
+                                        <span>{city}</span>
+                                      </CommandItem>
+                                    ))}
+                                  </CommandGroup>
+
+                                  {citySearch.trim() && !cities.some(c => c.toLowerCase() === citySearch.trim().toLowerCase()) && (
+                                    <div className="p-2 border-t border-border">
+                                      <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        className="w-full justify-start text-xs text-primary font-normal hover:bg-primary/10"
+                                        onClick={() => {
+                                          field.onChange(citySearch.trim());
+                                          setCityOpen(false);
+                                        }}
+                                      >
+                                        + Use "{citySearch.trim()}" as custom city
+                                      </Button>
+                                    </div>
+                                  )}
+                                </CommandList>
+                              </Command>
+                            </PopoverContent>
+                          </Popover>
+                          <FormDescription className="text-xs text-muted-foreground">
+                            Search your district, or type your town/city name if not in the list.
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      );
+                    }}
                   />
                 )}
 
