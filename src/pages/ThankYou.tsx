@@ -53,8 +53,8 @@ const ThankYou = () => {
                 <Calendar className="w-8 h-8 text-primary flex-shrink-0" />
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Key Dates</h3>
-                  <p className="text-sm text-muted-foreground">Results Declaration: <strong className="text-foreground">7th Nov 2026</strong></p>
-                  <p className="text-sm text-muted-foreground">Physical Finale: <strong className="text-primary">29th Nov 2026</strong></p>
+                  <p className="text-sm text-muted-foreground">Results Declaration: <strong className="text-foreground">25th Nov 2026</strong></p>
+                  <p className="text-sm text-muted-foreground">Physical Finale: <strong className="text-primary">20th Dec 2026</strong></p>
                 </div>
               </div>
 
@@ -71,9 +71,9 @@ const ThankYou = () => {
             <div className="mt-8 p-6 bg-primary/5 border border-primary/20 rounded-xl">
               <h3 className="font-semibold text-lg mb-2 text-primary">What's Next?</h3>
               <ul className="text-muted-foreground space-y-2 text-sm leading-relaxed">
-                <li>• <strong>Round 1 Idea Evaluation:</strong> The jury will review all online idea submissions.</li>
-                <li>• <strong>Results Announced:</strong> Shortlisted teams will be declared on <strong>7th November 2026</strong>.</li>
-                <li>• <strong>Round 2 Finale (Lucknow):</strong> Qualified teams will bring their physical working project to Lucknow on <strong>29th November 2026</strong> for live demonstration.</li>
+                <li>• <strong>Round 1 Idea Evaluation:</strong> The jury will review all online idea submissions under the theme "Society Welfare".</li>
+                <li>• <strong>Results Announced:</strong> Shortlisted teams will be declared on <strong>25th November 2026</strong>.</li>
+                <li>• <strong>Round 2 Finale (Lucknow):</strong> Qualified teams (Round 2 fee: ₹1,500) will bring their physical working project to Lucknow on <strong>20th December 2026</strong> for live demonstration.</li>
                 <li>• Event guidelines, venue address, and reporting schedules will be sent via email.</li>
               </ul>
             </div>

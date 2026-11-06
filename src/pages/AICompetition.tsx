@@ -43,17 +43,17 @@ export default function AICompetition() {
             <Card className="p-6 bg-card border-border">
               <Calendar className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-1 text-foreground">Round 1 Deadline</h3>
-              <p className="text-sm text-muted-foreground">November 5th, 2026</p>
+              <p className="text-sm text-muted-foreground">November 22nd, 2026</p>
             </Card>
             <Card className="p-6 bg-card border-border">
               <Trophy className="h-8 w-8 text-secondary mb-3" />
               <h3 className="font-semibold mb-1 text-foreground">Round 2 Finale</h3>
-              <p className="text-sm text-muted-foreground">November 29th, 2026 (Lucknow)</p>
+              <p className="text-sm text-muted-foreground">December 20th, 2026 (Lucknow)</p>
             </Card>
             <Card className="p-6 bg-card border-border">
               <Users className="h-8 w-8 text-primary mb-3" />
-              <h3 className="font-semibold mb-1 text-foreground">Categories</h3>
-              <p className="text-sm text-muted-foreground">Junior (4-7) & Senior (8-12)</p>
+              <h3 className="font-semibold mb-1 text-foreground">Categories & Theme</h3>
+              <p className="text-sm text-muted-foreground">Junior (4-7) & Senior (8-12) • Theme: Society Welfare</p>
             </Card>
           </div>
 
@@ -64,15 +64,15 @@ export default function AICompetition() {
             </p>
             <div className="space-y-4">
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-bold text-lg sm:text-xl mb-1 text-foreground">Round 1 – Online AI Idea Submission (Deadline: Nov 5, Results: Nov 7)</h3>
+                <h3 className="font-bold text-lg sm:text-xl mb-1 text-foreground">Round 1 – Online AI Idea Submission (Deadline: Nov 22, Results: Nov 25)</h3>
                 <p className="text-sm sm:text-base text-muted-foreground">
-                  Teams submit their AI problem statement, dataset approach, and proposed algorithm / prototype online. Teams are evaluated purely on innovation, ethical AI principles, and impact.
+                  Teams submit their AI problem statement, dataset approach, and proposed algorithm / prototype online under the theme <strong>"Society Welfare"</strong> (Round 1 Fee: ₹100). Teams are evaluated purely on innovation, ethical AI principles, and community impact.
                 </p>
               </div>
               <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-bold text-lg sm:text-xl mb-1 text-foreground">Round 2 – Grand Finale in Lucknow (November 29th, 2026)</h3>
+                <h3 className="font-bold text-lg sm:text-xl mb-1 text-foreground">Round 2 – Grand Finale in Lucknow (December 20th, 2026)</h3>
                 <p className="text-sm sm:text-base text-muted-foreground">
-                  Shortlisted teams travel to Lucknow to present and demonstrate their working AI models, applications, or prototypes before national judges and industry mentors.
+                  Shortlisted teams travel to Lucknow to present and demonstrate their working AI models, applications, or prototypes before national judges and industry mentors (Round 2 Fee: ₹1,500).
                 </p>
               </div>
             </div>

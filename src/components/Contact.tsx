@@ -102,7 +102,7 @@ export const Contact = () => {
               Physical event venue in Lucknow will be notified directly to shortlisted teams
             </p>
             <p className="text-muted-foreground mb-6">
-              Join us on <span className="text-primary font-semibold">29th November 2026</span> in Lucknow where teams selected from Round 1 will bring their physical working projects to compete!
+              Join us on <span className="text-primary font-semibold">20th December 2026</span> in Lucknow where teams selected from Round 1 will bring their physical working projects to compete!
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a

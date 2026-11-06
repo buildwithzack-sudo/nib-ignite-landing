@@ -302,15 +302,18 @@ const Registration = () => {
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-2">
               Register your team for National Innovators Battle 2026
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto px-2">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto px-2">
               <span className="px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-semibold text-center">
-                Round 1 Online Submission: Last Date 5th November 2026
+                Round 1 Online Submission: Last Date 22nd November 2026
               </span>
               <span className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs sm:text-sm font-semibold text-center">
-                Results: 7th November 2026
+                Results: 25th November 2026
               </span>
               <span className="px-3 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs sm:text-sm font-semibold text-center">
-                Round 2 Finale: 29th November 2026 (Lucknow)
+                Round 2 Finale: 20th December 2026 (Lucknow)
+              </span>
+              <span className="px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs sm:text-sm font-semibold text-center">
+                Round 1 Fee: ₹100 • Round 2 Fee: ₹1,500
               </span>
             </div>
           </motion.div>
@@ -780,9 +783,16 @@ const Registration = () => {
 
                 {/* Project Information */}
                 <div className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-semibold">Round 1: Project Idea Submission</h3>
-                    <p className="text-sm text-muted-foreground">Teams are evaluated and selected for the Lucknow finale based on this idea submission.</p>
+                  <div className="p-4 rounded-xl bg-primary/10 border border-primary/20 space-y-1.5">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-lg font-semibold text-foreground">Round 1: Project Idea Submission</h3>
+                      <span className="px-2.5 py-0.5 rounded-full bg-primary text-primary-foreground text-xs font-bold uppercase tracking-wide">
+                        Theme: Society Welfare
+                      </span>
+                    </div>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
+                      Teams are evaluated and selected for the Lucknow finale based on this idea submission. All projects must address real-world challenges aligned with the theme <strong className="text-foreground">"Society Welfare"</strong>.
+                    </p>
                   </div>
 
                   <FormField
@@ -896,12 +906,15 @@ const Registration = () => {
                     <h3 className="text-lg font-semibold">Payment Information</h3>
 
                     <div className="flex flex-col items-center gap-4">
-                      <div className="text-center">
-                        <p className="text-2xl font-bold text-primary mb-2">
-                          Registration Fee: ₹{getEventPrice()}
+                      <div className="text-center space-y-1">
+                        <p className="text-2xl font-bold text-primary">
+                          Round 1 Registration Fee: ₹{getEventPrice()}
                         </p>
-                        <p className="text-sm text-muted-foreground">
-                          Scan the QR code below to make payment
+                        <p className="text-xs font-semibold text-emerald-500">
+                          (Round 2 fee of ₹1,500 is only for shortlisted teams advancing to the Lucknow Grand Finale)
+                        </p>
+                        <p className="text-sm text-muted-foreground pt-1">
+                          Scan the QR code below to make payment of ₹{getEventPrice()} for Round 1
                         </p>
                       </div>
 

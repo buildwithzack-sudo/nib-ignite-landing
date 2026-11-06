@@ -12,16 +12,17 @@ const stages = [
     badgeColor: "bg-primary/20 text-primary border-primary/30",
     icon: Laptop,
     title: "Online Idea Submission",
-    date: "Last Date: 5th November 2026",
+    date: "Last Date: 22nd November 2026",
     dateIcon: Calendar,
     description:
-      "Submit your project idea, problem statement, and proposed technical solution online. Participation is open to all eligible students.",
+      "Submit your project idea, problem statement, and proposed technical solution online under the theme 'Society Welfare'. Participation is open to all eligible students.",
     keyPoints: [
-      "100% online submission",
+      "Theme: Society Welfare",
+      "Round 1 Fee: ₹100 per team",
+      "100% online idea submission",
       "Judged purely on idea merit & innovation",
-      "No physical travel required for Round 1",
     ],
-    highlight: "Deadline: 5th Nov",
+    highlight: "Deadline: 22nd Nov",
   },
   {
     stage: "Evaluation",
@@ -29,7 +30,7 @@ const stages = [
     badgeColor: "bg-amber-500/20 text-amber-500 border-amber-500/30",
     icon: CheckCircle2,
     title: "Result Declaration",
-    date: "7th November 2026",
+    date: "25th November 2026",
     dateIcon: Calendar,
     description:
       "The expert evaluation jury reviews all submitted ideas. Shortlisted teams advancing to the physical round in Lucknow will be declared.",
@@ -38,7 +39,7 @@ const stages = [
       "Shortlisted teams announced publicly",
       "Official invitations & guidelines issued",
     ],
-    highlight: "Results on 7th Nov",
+    highlight: "Results on 25th Nov",
   },
   {
     stage: "Round 2",
@@ -46,16 +47,17 @@ const stages = [
     badgeColor: "bg-secondary/20 text-secondary border-secondary/30",
     icon: Trophy,
     title: "Grand Finale in Lucknow",
-    date: "29th November 2026",
+    date: "20th December 2026",
     dateIcon: MapPin,
     description:
       "Selected teams travel to Lucknow to bring their physical working project / prototype for live presentation & demonstration before national judges.",
     keyPoints: [
-      "Physical event in Lucknow",
+      "Physical event in Lucknow (LKO)",
+      "Round 2 Fee: ₹1,500 (for shortlisted teams)",
       "Bring & demonstrate working project",
-      "Compete for trophies & cash prizes up to ₹25,000",
+      "Compete for trophies & ₹50,000 cash prizes",
     ],
-    highlight: "Finale: 29th Nov",
+    highlight: "Finale: 20th Dec",
   },
 ];
 
@@ -164,7 +166,7 @@ export const HowToParticipate = () => {
             </h3>
 
             <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-              Participation begins with the <strong className="text-foreground">online idea submission round</strong> closing on <strong className="text-primary">5th November 2026</strong>. Our evaluation panel will review all ideas and announce the results on <strong className="text-primary">7th November 2026</strong>. Only the selected teams will advance to the second round, which will happen physically in <strong className="text-secondary font-semibold">Lucknow on 29th November 2026</strong>. Selected teams will bring their physical working project to Lucknow to compete for the national title!
+              Participation begins with the <strong className="text-foreground">online idea submission round</strong> closing on <strong className="text-primary">22nd November 2026</strong> under the theme <strong className="text-foreground">"Society Welfare"</strong> (Round 1 Fee: ₹100). Our evaluation panel will review all ideas and announce the results on <strong className="text-primary">25th November 2026</strong>. Only the selected teams will advance to Round 2 (Round 2 Fee: ₹1,500), which will happen physically in <strong className="text-secondary font-semibold">Lucknow on 20th December 2026</strong>. Selected teams will bring their physical working project to Lucknow to compete for the national title and ₹50,000 cash prizes!
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

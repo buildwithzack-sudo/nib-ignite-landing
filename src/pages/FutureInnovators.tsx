@@ -33,17 +33,17 @@ export default function FutureInnovators() {
             <Card className="p-6">
               <Calendar className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Round 1 Deadline</h3>
-              <p className="text-muted-foreground">November 5th, 2026</p>
+              <p className="text-muted-foreground">November 22nd, 2026</p>
             </Card>
             <Card className="p-6">
               <Trophy className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Round 2 Finale</h3>
-              <p className="text-muted-foreground">November 29th, 2026</p>
+              <p className="text-muted-foreground">December 20th, 2026 (Lucknow)</p>
             </Card>
             <Card className="p-6">
               <Users className="h-8 w-8 text-primary mb-3" />
-              <h3 className="font-semibold mb-2">Categories</h3>
-              <p className="text-muted-foreground">Junior (4-7) & Senior (8-12)</p>
+              <h3 className="font-semibold mb-2">Categories & Theme</h3>
+              <p className="text-muted-foreground">Junior (4-7) & Senior (8-12) • Theme: Society Welfare</p>
             </Card>
           </div>
 
@@ -54,15 +54,15 @@ export default function FutureInnovators() {
             </p>
             <div className="space-y-4">
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 1 – Online Idea Submission (Deadline: Nov 5, Results: Nov 7)</h3>
+                <h3 className="font-bold text-xl mb-2">Round 1 – Online Idea Submission (Deadline: Nov 22, Results: Nov 25)</h3>
                 <p className="text-muted-foreground">
-                  Teams submit their problem statement, proposed solution, and technology online. Selection to the next round is purely based on the idea.
+                  Teams submit their problem statement, proposed solution, and technology online under the theme <strong>"Society Welfare"</strong> (Round 1 Fee: ₹100). Selection to the next round is purely based on the idea merit.
                 </p>
               </div>
               <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 2 – Physical Finale in Lucknow (November 29th, 2026)</h3>
+                <h3 className="font-bold text-xl mb-2">Round 2 – Physical Finale in Lucknow (December 20th, 2026)</h3>
                 <p className="text-muted-foreground">
-                  Shortlisted teams travel to Lucknow to bring and showcase their physical working project and working prototype before judges.
+                  Shortlisted teams travel to Lucknow to bring and showcase their physical working project and working prototype before judges (Round 2 Fee: ₹1,500).
                 </p>
               </div>
               <div className="border-l-4 border-primary pl-4">
