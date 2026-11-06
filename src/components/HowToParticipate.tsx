@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { FileText, CheckCircle2, Trophy, Calendar, MapPin, ArrowRight, Sparkles, Laptop } from "lucide-react";
+import { FileText, CheckCircle2, Trophy, Calendar, MapPin, ArrowRight, Sparkles, Laptop, Swords } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -54,7 +54,7 @@ const stages = [
     keyPoints: [
       "Physical event in Lucknow (LKO)",
       "Round 2 Fee: ₹1,500 (for shortlisted teams)",
-      "Bring & demonstrate working project",
+      "Robo Rugby teams enter directly (No Round 1 needed)",
       "Compete for trophies & ₹50,000 cash prizes",
     ],
     highlight: "Finale: 20th Dec",
@@ -165,9 +165,26 @@ export const HowToParticipate = () => {
               How the Selection Process Works
             </h3>
 
-            <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6">
               Participation begins with the <strong className="text-foreground">online idea submission round</strong> closing on <strong className="text-primary">22nd November 2026</strong> under the theme <strong className="text-foreground">"Society Welfare"</strong> (Round 1 Fee: ₹100). Our evaluation panel will review all ideas and announce the results on <strong className="text-primary">25th November 2026</strong>. Only the selected teams will advance to Round 2 (Round 2 Fee: ₹1,500), which will happen physically in <strong className="text-secondary font-semibold">Lucknow on 20th December 2026</strong>. Selected teams will bring their physical working project to Lucknow to compete for the national title and ₹50,000 cash prizes!
             </p>
+
+            <div className="max-w-2xl mx-auto mb-8 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-left flex items-start gap-3 shadow-sm">
+              <span className="p-2 rounded-xl bg-amber-500/20 text-amber-400 shrink-0 mt-0.5">
+                <Swords className="w-5 h-5" />
+              </span>
+              <div>
+                <h4 className="font-bold text-foreground text-sm sm:text-base flex items-center gap-2">
+                  <span>Fast-Track for Robo Rugby</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 uppercase">
+                    Direct Finale Entry
+                  </span>
+                </h4>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed">
+                  Since Robo Rugby bot dimensions and arena match rules are standardized, participants <strong>bypass the Round 1 online idea submission</strong>. Build your bot to specifications and participate directly in the Lucknow Grand Finale on 20th December (Registration Fee: ₹1,500)!
+                </p>
+              </div>
+            </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button

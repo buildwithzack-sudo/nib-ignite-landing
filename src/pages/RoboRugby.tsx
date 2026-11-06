@@ -1,15 +1,19 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, Ruler, Battery, Zap, Swords } from "lucide-react";
+import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, Ruler, Battery, Zap, Swords, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export default function RoboRugby() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <Navbar />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16">
         <Link to="/">
-          <Button variant="ghost" className="mb-8">
+          <Button variant="ghost" className="mb-6 hover:bg-muted">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Home
           </Button>
@@ -20,261 +24,316 @@ export default function RoboRugby() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          {/* Direct Entry Highlight Pill */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs sm:text-sm font-bold mb-4 shadow-sm">
+            <Swords className="w-4 h-4" />
+            <span>Direct Finale Entry • No Round 1 Required</span>
+          </div>
+
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Robo Rugby <span className="text-gradient">(Combat & Goals)</span>
           </h1>
 
-          <div className="grid md:grid-cols-3 gap-4 mb-12">
-            <Card className="p-6">
+          <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mb-10 leading-relaxed">
+            Design and construct your battle-ready bot to push, score, and demolish opponents in an electrified rugby combat arena.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            <Card className="p-6 bg-card border-border">
               <Calendar className="h-8 w-8 text-secondary mb-3" />
-              <h3 className="font-semibold mb-2">Registration Deadline</h3>
-              <p className="text-muted-foreground">November 22nd, 2026</p>
+              <h3 className="font-semibold mb-1 text-foreground">Registration Deadline</h3>
+              <p className="text-sm text-muted-foreground">November 22nd, 2026</p>
             </Card>
-            <Card className="p-6">
-              <Trophy className="h-8 w-8 text-secondary mb-3" />
-              <h3 className="font-semibold mb-2">Finale</h3>
-              <p className="text-muted-foreground">December 20th, 2026 (Lucknow)</p>
+            <Card className="p-6 bg-card border-border">
+              <Trophy className="h-8 w-8 text-amber-400 mb-3" />
+              <h3 className="font-semibold mb-1 text-foreground">Grand Finale (Lucknow)</h3>
+              <p className="text-sm text-muted-foreground">December 20th, 2026</p>
             </Card>
-            <Card className="p-6">
+            <Card className="p-6 bg-card border-border">
+              <Zap className="h-8 w-8 text-primary mb-3" />
+              <h3 className="font-semibold mb-1 text-foreground">Registration Fee</h3>
+              <p className="text-sm font-bold text-gradient">₹1,500 (Direct Finale Entry)</p>
+            </Card>
+            <Card className="p-6 bg-card border-border">
               <Users className="h-8 w-8 text-secondary mb-3" />
-              <h3 className="font-semibold mb-2">Categories</h3>
-              <p className="text-muted-foreground">Senior (7-12)</p>
+              <h3 className="font-semibold mb-1 text-foreground">Category & Format</h3>
+              <p className="text-sm text-muted-foreground">Senior (7-12) • Combat Arena</p>
             </Card>
           </div>
 
-          <Card className="p-8 mb-8">
-            <h2 className="text-3xl font-bold mb-6">Structure</h2>
-            <p className="text-muted-foreground mb-6">
-              The competition will be held in two stages followed by the final presentations at National Innovators Battle (NIB), 2026.
-            </p>
-            <div className="space-y-4">
-              <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 1 – Live Project Presentation</h3>
-                <p className="text-muted-foreground">
-                  Teams present their RoboRugby bot at their School event.
-                </p>
+          {/* Direct Entry Notice Callout */}
+          <Card className="p-6 sm:p-8 mb-8 bg-amber-500/10 border-2 border-amber-500/30 shadow-lg">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="p-3 bg-amber-500/20 rounded-xl text-amber-400 shrink-0">
+                <Zap className="h-7 w-7" />
               </div>
-              <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 2 – Working Prototype</h3>
-                <p className="text-muted-foreground">
-                  Shortlisted teams with working prototypes will proceed to Final for competition at National Innovators Battle before a panel of judges, where the winners will be announced.
+              <div>
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <h3 className="font-bold text-xl text-foreground">Direct Entry to Grand Finale</h3>
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40 uppercase">
+                    Bypasses Round 1
+                  </span>
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-primary/20 text-primary border border-primary/40">
+                    Fee: ₹1,500
+                  </span>
+                </div>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  Unlike open-theme innovation projects where students formulate unique problem statements, the <strong>Robo Rugby challenge is already standardized</strong> with strict bot dimensions, weight constraints, and arena gameplay. 
+                  Therefore, <strong>there is no Round 1 online idea submission</strong>. Interested teams build their bot directly to the official technical specifications and register directly for the Grand Finale in Lucknow on <strong>December 20th, 2026 (Registration Fee: ₹1,500)</strong>!
                 </p>
               </div>
             </div>
           </Card>
 
-          <Card className="p-8 mb-8">
-            <h2 className="text-3xl font-bold mb-6">Competition Rules</h2>
-            <ul className="space-y-3 text-muted-foreground">
+          {/* How to Participate Structure */}
+          <Card className="p-6 sm:p-8 mb-8 bg-card border-border">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-foreground">How to Participate</h2>
+            <div className="space-y-4">
+              <div className="border-l-4 border-primary pl-4">
+                <h3 className="font-bold text-lg sm:text-xl mb-1 text-foreground flex items-center gap-2">
+                  <span>Step 1: Bot Engineering (Pre-Event)</span>
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground">
+                  Build a wired or wireless bot according to the dimensions (max 550×550×650mm) and weight (max 20 kg). Equip your bot with mechanical flippers, cutters, pushers, or weapons for rugby combat.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-amber-500 pl-4">
+                <h3 className="font-bold text-lg sm:text-xl mb-1 text-amber-400 flex items-center gap-2">
+                  <span>Step 2: Direct Finale Registration (Fee: ₹1,500)</span>
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 uppercase">
+                    No Round 1 Screening
+                  </span>
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground">
+                  Skip the online idea submission phase. Register your team and bot (Entry Fee: ₹1,500) to secure your official match slot directly for the Lucknow arena.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-secondary pl-4">
+                <h3 className="font-bold text-lg sm:text-xl mb-1 text-foreground flex items-center gap-2">
+                  <span>Step 3: Arena Battle in Lucknow (December 20th, 2026)</span>
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground">
+                  Undergo technical inspection (dimensions, mobility, battery checks), then clash in head-to-head match rounds for goals, combat points, and national awards!
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          {/* Competition Rules */}
+          <Card className="p-6 sm:p-8 mb-8 bg-card border-border">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-foreground">Competition Rules</h2>
+            <ul className="space-y-3 text-sm sm:text-base text-muted-foreground">
               <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                Team can make Wired and Wireless bot with or without weapon for playing Rugby with their bots.
+                <span className="text-secondary mr-2 font-bold">•</span>
+                Teams can make Wired or Wireless bots with or without weapons for playing rugby and battling in the arena.
               </li>
               <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                In wireless case - Any team will be disqualified if they are unable to change their wireless module's frequency (if asked to do so).
+                <span className="text-secondary mr-2 font-bold">•</span>
+                In the case of wireless bots, any team will be disqualified if they are unable to change their wireless module's frequency (if requested by referee).
               </li>
               <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                The team which scores maximum points: hits/damage/touch (20 points), toppling out of arena (50 points), and goal (100 points), will be declared as winner.
+                <span className="text-secondary mr-2 font-bold">•</span>
+                The team that scores maximum points wins: hits/damage/touch (20 points), toppling opponent out of arena (50 points), and goal (100 points).
               </li>
               <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                Robo war is also allowed simultaneously (i.e., any bot can fight with any other using any means).
+                <span className="text-secondary mr-2 font-bold">•</span>
+                Simultaneous bot combat is allowed (any bot can engage the other using approved weapon mechanisms).
               </li>
               <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                Compensation time will be given at the discretion of referee.
+                <span className="text-secondary mr-2 font-bold">•</span>
+                Compensation time and timeouts are given at the discretion of the referee. Break time between rounds is 1–2 minutes.
               </li>
               <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                The break time would be 1-2 minutes.
+                <span className="text-secondary mr-2 font-bold">•</span>
+                For wired bots, control wires must be suspended at least 1 meter above the ground to prevent entanglement.
               </li>
               <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                In case of wired bot, wires must be 1m above from ground.
+                <span className="text-secondary mr-2 font-bold">•</span>
+                Dead bots are not allowed; if an inactive bot cannot move within the count, the opposing team is awarded the round.
               </li>
               <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                Timeouts will be at the discretion of the referee.
+                <span className="text-secondary mr-2 font-bold">•</span>
+                All bots will be checked for responsive mobility at the start of every round.
               </li>
               <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                Dead bots are not allowed, opponents team will be considered as winner.
-              </li>
-              <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                All bots will be checked at the start of every round that they are moving.
-              </li>
-              <li className="flex items-start">
-                <span className="text-secondary mr-2">•</span>
-                Claiming is allowed but none should stop the game till referee stops the game.
+                <span className="text-secondary mr-2 font-bold">•</span>
+                Claims and protests can be made, but gameplay must not be halted until officially signaled by the referee.
               </li>
             </ul>
           </Card>
 
-          <Card className="p-8 mb-8 bg-primary/5 border-primary">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Swords className="h-8 w-8 text-primary" />
+          {/* Allowed Combat Actions */}
+          <Card className="p-6 sm:p-8 mb-8 bg-primary/5 border-primary">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 flex items-center gap-3 text-foreground">
+              <Swords className="h-7 w-7 text-primary" />
               Allowed Combat Actions
             </h2>
-            <ul className="space-y-3 text-muted-foreground">
+            <ul className="space-y-3 text-sm sm:text-base text-muted-foreground">
               <li className="flex items-start">
-                <span className="text-primary mr-2 text-xl">✓</span>
-                Hitting OR Kicking OR Thrashing OR Flipping the other bot.
+                <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                <span>Hitting, pushing, kicking, thrashing, or flipping the opponent bot.</span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary mr-2 text-xl">✓</span>
-                Completely demolishing any other bot.
+                <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                <span>Weapon engagement, lifting opponent, or toppling opponent out of the boundary.</span>
               </li>
               <li className="flex items-start">
-                <span className="text-primary mr-2 text-xl">✓</span>
-                Anything else that you can imagine!!!
+                <CheckCircle2 className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-0.5" />
+                <span>Creative mechanical combat actions adhering to non-hazardous weapon rules.</span>
               </li>
             </ul>
           </Card>
 
-          <Card className="p-8 mb-8">
-            <h2 className="text-3xl font-bold mb-6">Warnings & Penalties</h2>
+          {/* Warnings & Penalties */}
+          <Card className="p-6 sm:p-8 mb-8 bg-card border-border">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-foreground">Warnings & Penalties</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-bold text-xl mb-4 text-secondary">Warnings</h3>
-                <ul className="space-y-3 text-muted-foreground">
+                <ul className="space-y-3 text-sm text-muted-foreground">
                   <li className="flex items-start">
                     <AlertCircle className="h-5 w-5 text-secondary mr-2 flex-shrink-0 mt-0.5" />
-                    Bot must not move before the whistle and after the 3, 2, 1 count begins.
+                    Bot must not move before the whistle or after the 3, 2, 1 countdown begins.
                   </li>
                   <li className="flex items-start">
                     <AlertCircle className="h-5 w-5 text-secondary mr-2 flex-shrink-0 mt-0.5" />
-                    Touching (any kind of interruption) the bot without asking referee.
+                    Touching or physical human intervention without referee permission.
                   </li>
                   <li className="flex items-start">
                     <AlertCircle className="h-5 w-5 text-secondary mr-2 flex-shrink-0 mt-0.5" />
-                    In case of any discrepancy, referee's decisions would be final.
+                    Referee's decisions on fouls, points, and warnings are final and binding.
                   </li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-bold text-xl mb-4 text-destructive">Penalties</h3>
-                <ul className="space-y-3 text-muted-foreground">
+                <ul className="space-y-3 text-sm text-muted-foreground">
                   <li className="flex items-start">
-                    <span className="text-destructive mr-2">⚠</span>
-                    Second warning is a penalty (20 points).
+                    <span className="text-destructive mr-2 font-bold">⚠</span>
+                    A second warning results in a penalty deduction (20 points).
                   </li>
                   <li className="flex items-start">
-                    <span className="text-destructive mr-2">⚠</span>
-                    Bots (striker + defender both) playing in the penalty should have played in the match.
+                    <span className="text-destructive mr-2 font-bold">⚠</span>
+                    Intentionally damaging the arena surface or enclosure results in disqualification.
                   </li>
                   <li className="flex items-start">
-                    <span className="text-destructive mr-2">⚠</span>
-                    Intentionally damaging the arena will lead to disqualification of team.
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-destructive mr-2">⚠</span>
-                    Wire cutting of opposite is not allowed. Will lead to disqualification.
+                    <span className="text-destructive mr-2 font-bold">⚠</span>
+                    Direct wire cutting of opposing wired bots is strictly prohibited and results in immediate disqualification.
                   </li>
                 </ul>
               </div>
             </div>
           </Card>
 
-          <Card className="p-8 mb-8">
-            <h2 className="text-3xl font-bold mb-6">Arena Specifications</h2>
+          {/* Arena Specifications */}
+          <Card className="p-6 sm:p-8 mb-8 bg-card border-border">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-foreground">Arena Specifications</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-4">
                 <Ruler className="h-8 w-8 text-secondary flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-lg mb-2">Arena Size</h3>
-                  <p className="text-muted-foreground">The arena size would be 8ft × 8ft approximately.</p>
+                  <h3 className="font-bold text-lg mb-1 text-foreground">Arena Dimensions</h3>
+                  <p className="text-sm text-muted-foreground">The playing arena size is approximately 8ft × 8ft enclosed with side borders and designated goal areas.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <AlertCircle className="h-8 w-8 text-primary flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-lg mb-2">Obstacles</h3>
-                  <p className="text-muted-foreground">Arena may have some hurdles.</p>
+                  <h3 className="font-bold text-lg mb-1 text-foreground">Obstacles & Surface</h3>
+                  <p className="text-sm text-muted-foreground">The arena surface may include minor terrain challenges and obstacles to test driver agility.</p>
                 </div>
               </div>
             </div>
           </Card>
 
-          <Card className="p-8 mb-8">
-            <h2 className="text-3xl font-bold mb-6">Bot Specifications</h2>
+          {/* Bot Specifications */}
+          <Card className="p-6 sm:p-8 mb-8 bg-card border-border">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-foreground">Bot Specifications</h2>
             
             <div className="space-y-6">
               <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-bold text-xl mb-3 flex items-center gap-2">
+                <h3 className="font-bold text-xl mb-3 flex items-center gap-2 text-foreground">
                   <Ruler className="h-6 w-6 text-secondary" />
                   Dimensions and Weight
                 </h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• The robot should not be more than 550mm × 550mm × 650mm (length × breadth × height) in size at any time during gameplay.</li>
-                  <li>• Bot can be of at-most 20 Kg.</li>
-                  <li>• Teams have to show and declare ALL of their bots before their first match itself.</li>
-                  <li>• No major changes in the weapon system etc. would be allowed after the above mentioned declaration.</li>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• The robot must not exceed <strong>550mm × 550mm × 650mm</strong> (length × breadth × height) at any time during gameplay.</li>
+                  <li>• Maximum permissible bot weight is <strong>20 kg</strong> (including batteries and on-board weapons).</li>
+                  <li>• Teams must declare and present all bots for dimension verification before their first match.</li>
+                  <li>• No major alterations to weapon configurations are permitted following initial technical inspection.</li>
                 </ul>
               </div>
 
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-bold text-xl mb-3 flex items-center gap-2">
+                <h3 className="font-bold text-xl mb-3 flex items-center gap-2 text-foreground">
                   <Zap className="h-6 w-6 text-primary" />
-                  Weapons System
+                  Weapon Systems
                 </h3>
-                <p className="text-muted-foreground mb-3">
-                  Robots can have any kind of magnetic weapons, cutters, flippers, saws, lifting devices, spinning hammers etc. as weapons along with:
+                <p className="text-muted-foreground text-sm mb-3">
+                  Robots can be equipped with magnetic arms, mechanical flippers, lifting forks, spinning drums, or cutters adhering to safety bounds:
                 </p>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• Use of pneumatics and hydraulics are allowed.</li>
-                  <li>• Pneumatics Robot can use pressurized non-inflammable gases to actuate pneumatic devices. Maximum allowed outlet nozzle pressure is 8 bar.</li>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Use of pneumatic or hydraulic systems is permitted.</li>
+                  <li>• Pneumatic bots may use pressurized non-flammable gases with a maximum outlet nozzle pressure of 8 bar.</li>
                 </ul>
               </div>
 
               <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-bold text-xl mb-3">Mobility</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• All robots must have easily visible and controlled mobility in order to compete.</li>
-                  <li>• Flying is not allowed.</li>
-                  <li>• Hopping is not allowed.</li>
+                <h3 className="font-bold text-xl mb-3 text-foreground">Mobility</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• All robots must exhibit clearly visible, controlled mobility on the arena surface.</li>
+                  <li>• Flying and hopping mechanisms are strictly prohibited.</li>
                 </ul>
               </div>
 
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-bold text-xl mb-3 flex items-center gap-2">
+                <h3 className="font-bold text-xl mb-3 flex items-center gap-2 text-foreground">
                   <Battery className="h-6 w-6 text-primary" />
                   Batteries and Power
                 </h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• Each team must have batteries to power their bots (Note: backup battery will be provided by NIB at arena to the teams in case of emergency).</li>
-                  <li>• The battery will be taken into consideration for the measurement to be made for the machine dimension and the weight.</li>
-                  <li>• The only permitted batteries are ones that cannot spill or spray any of their contents when damaged or inverted.</li>
-                  <li>• The maximum allowed battery voltage is 24 volts. No external power supply will be provided.</li>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Each team must provide their own on-board power source (backup emergency batteries will be available at the arena).</li>
+                  <li>• Battery weight and placement are factored into total bot weight and dimension compliance.</li>
+                  <li>• Only sealed, spill-proof batteries (e.g. LiPo, sealed lead-acid, NiMH) are permitted.</li>
+                  <li>• The maximum allowed battery voltage is <strong>24V</strong>. No external AC power cords are permitted.</li>
                 </ul>
               </div>
 
               <div className="border-l-4 border-destructive pl-4">
-                <h3 className="font-bold text-xl mb-3 text-destructive">Prohibited Items</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• Liquid projectiles.</li>
-                  <li>• Any kind of inflammable liquid or Explosive.</li>
-                  <li>• Flame-based weapons, and Flammable liquids.</li>
-                  <li>• Any kind of AC power (Generators or Inverters).</li>
-                  <li>• Nets, tape, glue, or any other entanglement device.</li>
+                <h3 className="font-bold text-xl mb-3 text-destructive">Prohibited Equipment</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Liquid projectiles or flammable liquids.</li>
+                  <li>• Explosives, pyrotechnics, or flame-based attachments.</li>
+                  <li>• AC mains power, generators, or external power cords.</li>
+                  <li>• Entanglement devices (nets, adhesive tape, glue, or loose strings).</li>
                 </ul>
               </div>
             </div>
           </Card>
 
-          <Card className="p-8 bg-secondary/5 border-secondary">
-            <h2 className="text-2xl font-bold mb-4">Ready to Participate?</h2>
-            <p className="text-muted-foreground mb-6">
-              Build your combat bot and compete at NIB 2026!
+          {/* Call to Action */}
+          <Card className="p-8 bg-gradient-to-r from-amber-500/10 via-secondary/10 to-primary/10 border-2 border-amber-500/40 text-center">
+            <Swords className="w-12 h-12 text-amber-400 mx-auto mb-4 animate-bounce" />
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-foreground">Ready to Build and Battle?</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto mb-6 text-sm sm:text-base">
+              Start building your combat robot to official specifications today and prepare to battle for national recognition at the Lucknow Grand Finale!
             </p>
-            <Button size="lg" variant="secondary" className="w-full md:w-auto">
-              Register (Coming Soon)
+            <Button
+              size="lg"
+              className="text-base px-8 py-6 glow-primary font-semibold"
+              onClick={() => {
+                document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <Link to="/">Back to All Events</Link>
             </Button>
           </Card>
         </motion.div>
       </div>
+
+      <Footer />
     </div>
   );
 }

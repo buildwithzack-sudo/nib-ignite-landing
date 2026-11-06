@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, MapPin, ArrowRight, Clock, ChevronDown, Trophy } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Clock, ChevronDown, Trophy, Swords } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -132,6 +132,39 @@ export const Hero = () => {
                 <strong className="text-foreground font-semibold">₹1,500</strong>
               </div>
             </div>
+          </motion.div>
+
+          {/* Robo Rugby Direct Entry Highlight */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.55 }}
+            className="max-w-3xl mx-auto mb-8 p-3.5 sm:p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-3 text-left shadow-sm"
+          >
+            <div className="flex items-center gap-3">
+              <span className="p-2 sm:p-2.5 rounded-xl bg-amber-500/20 text-amber-400 shrink-0">
+                <Swords className="w-4 h-4 sm:w-5 sm:h-5" />
+              </span>
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h5 className="font-bold text-foreground text-sm">Robo Rugby: Direct Entry to Grand Finale</h5>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase bg-amber-500/20 text-amber-400 border border-amber-500/40">
+                    No Round 1 Required
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Pre-defined combat bot challenge (Fee: ₹1,500) — skip online idea submission and compete directly at the Lucknow Finale on 20th Dec!
+                </p>
+              </div>
+            </div>
+            <Button
+              size="sm"
+              variant="outline"
+              className="w-full sm:w-auto shrink-0 text-xs font-semibold border-amber-500/40 text-amber-400 hover:bg-amber-500/20 hover:text-amber-300 cursor-pointer"
+              onClick={() => navigate('/events/robo-rugby')}
+            >
+              View Bot Rules →
+            </Button>
           </motion.div>
 
           {/* Event Details */}
