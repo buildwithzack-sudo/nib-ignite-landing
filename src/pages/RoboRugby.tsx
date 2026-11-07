@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, Ruler, Battery, Zap, Swords, CheckCircle2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, Ruler, Battery, Zap, Swords, CheckCircle2, ArrowRight } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export default function RoboRugby() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -318,17 +319,30 @@ export default function RoboRugby() {
             <Swords className="w-12 h-12 text-amber-400 mx-auto mb-4 animate-bounce" />
             <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-foreground">Ready to Build and Battle?</h2>
             <p className="text-muted-foreground max-w-xl mx-auto mb-6 text-sm sm:text-base">
-              Start building your combat robot to official specifications today and prepare to battle for national recognition at the Lucknow Grand Finale!
+              Start building your combat robot to official specifications today and register directly for the Lucknow Grand Finale on December 20th!
             </p>
-            <Button
-              size="lg"
-              className="text-base px-8 py-6 glow-primary font-semibold"
-              onClick={() => {
-                document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              <Link to="/">Back to All Events</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto text-base px-8 py-6 glow-primary font-semibold cursor-pointer"
+                onClick={() => {
+                  navigate('/registration?track=roborugby');
+                }}
+              >
+                Register for Robo Rugby (₹1,500)
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto text-base px-8 py-6 border-border hover:bg-muted font-medium cursor-pointer"
+                onClick={() => {
+                  navigate('/');
+                }}
+              >
+                Back to All Events
+              </Button>
+            </div>
           </Card>
         </motion.div>
       </div>

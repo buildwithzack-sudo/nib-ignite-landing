@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, ArrowRight } from "lucide-react";
+import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, ArrowRight, Award, Sparkles } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -71,6 +71,106 @@ export default function FutureInnovators() {
                   Top teams present their solutions at National Innovators Battle before a panel of judges, where the winners will be announced.
                 </p>
               </div>
+            </div>
+          </Card>
+
+          <Card className="p-8 mb-8 border-primary/30">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-2">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>Judgement Matrix</span>
+                </div>
+                <h2 className="text-3xl font-bold">Overall Judgement Criteria</h2>
+              </div>
+              <div className="bg-primary/10 border border-primary/20 px-4 py-2 rounded-xl text-right shrink-0">
+                <span className="text-xs text-muted-foreground block font-medium">Total Weightage</span>
+                <span className="text-2xl font-black text-primary">100 Marks</span>
+              </div>
+            </div>
+
+            <p className="text-muted-foreground mb-6">
+              All participating projects are evaluated by our expert jury panel across the following 7 parameters throughout the competition (governing both Round 1 online shortlisting and the Grand Finale live demonstration in Lucknow):
+            </p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-border text-sm text-foreground/80 font-semibold bg-muted/30">
+                    <th className="py-3 px-4">#</th>
+                    <th className="py-3 px-4">Evaluation Criteria</th>
+                    <th className="py-3 px-4 text-right">Weightage</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/60 text-sm">
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">01</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Innovation & Originality</span>
+                      <span className="text-xs text-muted-foreground">Novelty of the concept, unique perspective, and distinction from existing solutions.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">20 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">02</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Social Impact & Public Welfare</span>
+                      <span className="text-xs text-muted-foreground">Alignment with the "Society Welfare" theme and meaningful real-world community benefits.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">20 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">03</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Problem Identification & Understanding</span>
+                      <span className="text-xs text-muted-foreground">Clarity in defining the root problem and understanding affected communities.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">15 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">04</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Practicality & Feasibility</span>
+                      <span className="text-xs text-muted-foreground">Feasibility of execution, practical resource demands, and realistic deployment.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">15 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">05</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Technical Application & Understanding</span>
+                      <span className="text-xs text-muted-foreground">Appropriate selection and technical soundness of components, hardware, or code.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">10 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">06</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Creativity & Problem-Solving Approach</span>
+                      <span className="text-xs text-muted-foreground">Ingenious workarounds, design trade-offs, and critical engineering mindset.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">10 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">07</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Idea Explanation & Presentation</span>
+                      <span className="text-xs text-muted-foreground">Clarity, coherence, and quality of the written submission and technical documentation.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">10 Marks</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr className="border-t-2 border-primary/30 font-bold bg-primary/5">
+                    <td className="py-3.5 px-4" colSpan={2}>
+                      <span className="text-foreground">Total Cumulative Score</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right text-primary text-base">
+                      100 Marks
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
           </Card>
 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, MapPin, ArrowRight, Clock, ChevronDown, Trophy, Swords } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Clock, ChevronDown, Trophy, Swords, Award } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -88,6 +88,24 @@ export const Hero = () => {
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1">
                   Submit your project idea online by <strong className="text-foreground">22nd November</strong>. Teams are evaluated and selected purely based on their idea.
                 </p>
+
+                {/* Judgement Criteria Link */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById("judgement-criteria");
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="mt-2.5 inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors group cursor-pointer"
+                >
+                  <Award className="w-3.5 h-3.5 text-primary shrink-0" />
+                  <span className="underline underline-offset-4 decoration-primary/40 group-hover:decoration-primary">
+                    View Judgement Criteria (100 Marks)
+                  </span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </button>
               </div>
 
               {/* Registration Link and Fee in Rectangular Box */}
@@ -98,7 +116,7 @@ export const Hero = () => {
                 <Button
                   size="sm"
                   className="w-full sm:w-auto h-8 text-xs font-semibold glow-primary cursor-pointer"
-                  onClick={() => navigate('/registration')}
+                  onClick={() => navigate('/registration?track=round1')}
                 >
                   Register Now
                   <ArrowRight className="w-3.5 h-3.5 ml-1" />
@@ -125,11 +143,39 @@ export const Hero = () => {
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1">
                   Selected teams from Round 1 travel to <strong className="text-foreground">Lucknow on 20th December</strong> to showcase their physical working project.
                 </p>
+
+                {/* Judgement Criteria Link */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById("judgement-criteria");
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="mt-2.5 inline-flex items-center gap-1.5 text-xs font-semibold text-secondary hover:text-secondary/80 transition-colors group cursor-pointer"
+                >
+                  <Award className="w-3.5 h-3.5 text-secondary shrink-0" />
+                  <span className="underline underline-offset-4 decoration-secondary/40 group-hover:decoration-secondary">
+                    View Judgement Criteria (100 Marks)
+                  </span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </button>
               </div>
 
-              <div className="pt-3 mt-3 border-t border-border/50 flex items-center justify-between text-xs text-muted-foreground">
-                <span>Fee for Shortlisted Finalists:</span>
-                <strong className="text-foreground font-semibold">₹1,500</strong>
+              <div className="pt-3 mt-3 border-t border-border/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                <span className="text-xs text-muted-foreground font-medium">
+                  Fee: <strong className="text-foreground font-semibold">₹1,500</strong>
+                </span>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="w-full sm:w-auto h-8 text-xs font-semibold border-secondary/50 text-secondary hover:bg-secondary/15 cursor-pointer"
+                  onClick={() => navigate('/registration?track=round2')}
+                >
+                  Finale Entry
+                  <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Button>
               </div>
             </div>
           </motion.div>
@@ -161,9 +207,9 @@ export const Hero = () => {
               size="sm"
               variant="outline"
               className="w-full sm:w-auto shrink-0 text-xs font-semibold border-amber-500/40 text-amber-400 hover:bg-amber-500/20 hover:text-amber-300 cursor-pointer"
-              onClick={() => navigate('/events/robo-rugby')}
+              onClick={() => navigate('/registration?track=roborugby')}
             >
-              View Bot Rules →
+              Register for Rugby →
             </Button>
           </motion.div>
 

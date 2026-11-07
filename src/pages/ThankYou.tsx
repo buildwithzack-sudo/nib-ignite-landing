@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Calendar, MapPin, Home } from "lucide-react";
+import { CheckCircle, Calendar, MapPin, Home, FileText, Download } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -74,6 +74,7 @@ const ThankYou = () => {
                 <li>• <strong>Round 1 Idea Evaluation:</strong> The jury will review all online idea submissions under the theme "Society Welfare".</li>
                 <li>• <strong>Results Announced:</strong> Shortlisted teams will be declared on <strong>25th November 2026</strong>.</li>
                 <li>• <strong>Round 2 Finale (Lucknow):</strong> Qualified teams (Round 2 fee: ₹1,500) will bring their physical working project to Lucknow on <strong>20th December 2026</strong> for live demonstration.</li>
+                <li>• <strong>Participant Consent Form:</strong> All teams traveling to Lucknow must carry a printed and signed copy of the <a href="/documents/ConsentForm2026.pdf" download="NIB_ConsentForm_2026.pdf" className="text-secondary font-bold underline underline-offset-2 hover:text-secondary/80">Official Consent Form (Download PDF)</a>.</li>
                 <li>• Event guidelines, venue address, and reporting schedules will be sent via email.</li>
               </ul>
             </div>
