@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import consentFormPdf from "@/assets/documents/ConsentForm2026.pdf";
+import generalRulesPdf from "@/assets/documents/NIB_General_Rules_Regulations.pdf";
+import roboRugbyGuidelinesPdf from "@/assets/documents/NIB_RoboRugby_Guidelines.pdf";
 
 const ThankYou = () => {
   const navigate = useNavigate();
@@ -74,8 +77,9 @@ const ThankYou = () => {
                 <li>• <strong>Round 1 Idea Evaluation:</strong> The jury will review all online idea submissions under the theme "Society Welfare".</li>
                 <li>• <strong>Results Announced:</strong> Shortlisted teams will be declared on <strong>25th November 2026</strong>.</li>
                 <li>• <strong>Round 2 Finale (Lucknow):</strong> Qualified teams (Round 2 fee: ₹1,500) will bring their physical working project to Lucknow on <strong>20th December 2026</strong> for live demonstration.</li>
-                <li>• <strong>Participant Consent Form:</strong> All teams traveling to Lucknow must carry a printed and signed copy of the <a href="/documents/ConsentForm2026.pdf" download="NIB_ConsentForm_2026.pdf" className="text-secondary font-bold underline underline-offset-2 hover:text-secondary/80">Official Consent Form (Download PDF)</a>.</li>
-                <li>• Event guidelines, venue address, and reporting schedules will be sent via email.</li>
+                <li>• <strong>Participant Consent Form:</strong> All teams traveling to Lucknow must carry a printed and signed copy of the <a href={consentFormPdf} download="NIB_ConsentForm_2026.pdf" className="text-secondary font-bold underline underline-offset-2 hover:text-secondary/80">Official Consent Form (Download PDF)</a>.</li>
+                <li>• <strong>Event Guidelines:</strong> Review the official <a href={generalRulesPdf} download="NIB_General_Rules_and_Regulations.pdf" className="text-primary font-bold underline underline-offset-2 hover:text-primary/80">Future Innovators Rules</a> or <a href={roboRugbyGuidelinesPdf} download="NIB_RoboRugby_Guidelines.pdf" className="text-amber-400 font-bold underline underline-offset-2 hover:text-amber-300">Robo Rugby Guidelines</a> for full competition specifications.</li>
+                <li>• Venue address, reporting schedules, and reporting guidelines will be sent via email.</li>
               </ul>
             </div>
           </motion.div>

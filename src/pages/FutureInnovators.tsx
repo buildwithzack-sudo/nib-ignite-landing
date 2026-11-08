@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, ArrowRight, Award, Sparkles } from "lucide-react";
+import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, ArrowRight, Award, Sparkles, FileText, Download, ExternalLink } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import consentFormPdf from "@/assets/documents/ConsentForm2026.pdf";
+import generalRulesPdf from "@/assets/documents/NIB_General_Rules_Regulations.pdf";
 
 export default function FutureInnovators() {
   const navigate = useNavigate();
@@ -46,6 +48,57 @@ export default function FutureInnovators() {
               <p className="text-muted-foreground">Junior (4-7) & Senior (8-12) • Theme: Society Welfare</p>
             </Card>
           </div>
+
+          {/* Official Documents & Downloads */}
+          <Card className="p-6 sm:p-8 mb-8 bg-card border-primary/30 shadow-md">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex items-start gap-3.5">
+                <div className="p-3 bg-primary/10 rounded-xl text-primary border border-primary/20 shrink-0">
+                  <FileText className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-1">Official Event Documents & Guidelines</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                    Download the official Future Innovators rulebook and the participant consent form required for the Lucknow Grand Finale.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0 w-full md:w-auto">
+                <a
+                  href={generalRulesPdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <Button variant="outline" size="sm" className="w-full sm:w-auto text-xs h-9 cursor-pointer">
+                    <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
+                    Preview Rules
+                  </Button>
+                </a>
+                <a
+                  href={generalRulesPdf}
+                  download="NIB_General_Rules_and_Regulations.pdf"
+                  className="w-full sm:w-auto"
+                >
+                  <Button size="sm" className="w-full sm:w-auto text-xs h-9 font-semibold bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer">
+                    <Download className="w-3.5 h-3.5 mr-1.5" />
+                    Rules & Regs (PDF)
+                  </Button>
+                </a>
+                <a
+                  href={consentFormPdf}
+                  download="NIB_ConsentForm_2026.pdf"
+                  className="w-full sm:w-auto"
+                >
+                  <Button size="sm" variant="outline" className="w-full sm:w-auto text-xs h-9 font-semibold border-secondary/50 text-secondary hover:bg-secondary/10 cursor-pointer">
+                    <Download className="w-3.5 h-3.5 mr-1.5" />
+                    Consent Form (PDF)
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </Card>
 
           <Card className="p-8 mb-8">
             <h2 className="text-3xl font-bold mb-6">Structure</h2>

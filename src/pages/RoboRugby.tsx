@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, Ruler, Battery, Zap, Swords, CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, Ruler, Battery, Zap, Swords, CheckCircle2, ArrowRight, FileText, Download, ExternalLink } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import consentFormPdf from "@/assets/documents/ConsentForm2026.pdf";
+import roboRugbyGuidelinesPdf from "@/assets/documents/NIB_RoboRugby_Guidelines.pdf";
 
 export default function RoboRugby() {
   const navigate = useNavigate();
@@ -82,6 +84,57 @@ export default function RoboRugby() {
                   Unlike open-theme innovation projects where students formulate unique problem statements, the <strong>Robo Rugby challenge is already standardized</strong> with strict bot dimensions, weight constraints, and arena gameplay. 
                   Therefore, <strong>there is no Round 1 online idea submission</strong>. Interested teams build their bot directly to the official technical specifications and register directly for the Grand Finale in Lucknow on <strong>December 20th, 2026 (Registration Fee: ₹1,500)</strong>!
                 </p>
+              </div>
+            </div>
+          </Card>
+
+          {/* Official Documents & Downloads */}
+          <Card className="p-6 sm:p-8 mb-8 bg-card border-amber-500/30 shadow-md">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex items-start gap-3.5">
+                <div className="p-3 bg-amber-500/10 rounded-xl text-amber-400 border border-amber-500/20 shrink-0">
+                  <FileText className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-1">Official Guidelines & Consent Form</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                    Download the official Robo Rugby arena guidelines (bot dimensions, weapon constraints & scoring) along with the mandatory Lucknow Grand Finale consent form.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0 w-full md:w-auto">
+                <a
+                  href={roboRugbyGuidelinesPdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <Button variant="outline" size="sm" className="w-full sm:w-auto text-xs h-9 cursor-pointer">
+                    <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
+                    Preview Guidelines
+                  </Button>
+                </a>
+                <a
+                  href={roboRugbyGuidelinesPdf}
+                  download="NIB_RoboRugby_Guidelines.pdf"
+                  className="w-full sm:w-auto"
+                >
+                  <Button size="sm" className="w-full sm:w-auto text-xs h-9 font-semibold bg-amber-500 text-black hover:bg-amber-400 shadow-sm cursor-pointer">
+                    <Download className="w-3.5 h-3.5 mr-1.5" />
+                    Robo Rugby Guidelines (PDF)
+                  </Button>
+                </a>
+                <a
+                  href={consentFormPdf}
+                  download="NIB_ConsentForm_2026.pdf"
+                  className="w-full sm:w-auto"
+                >
+                  <Button size="sm" variant="outline" className="w-full sm:w-auto text-xs h-9 font-semibold border-secondary/50 text-secondary hover:bg-secondary/10 cursor-pointer">
+                    <Download className="w-3.5 h-3.5 mr-1.5" />
+                    Consent Form (PDF)
+                  </Button>
+                </a>
               </div>
             </div>
           </Card>

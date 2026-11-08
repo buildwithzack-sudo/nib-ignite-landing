@@ -44,6 +44,9 @@ import { toast } from "@/hooks/use-toast";
 import { indianStates, indianStatesAndCities } from "@/data/indiaData";
 import { Check, ChevronsUpDown, Loader2, Upload, Swords, Trophy, Clock, CheckCircle2, ShieldCheck, Sparkles, FileText, Download, ExternalLink, AlertCircle } from "lucide-react";
 import paymentQR from "@/assets/vigyan-qr.png";
+import consentFormPdf from "@/assets/documents/ConsentForm2026.pdf";
+import generalRulesPdf from "@/assets/documents/NIB_General_Rules_Regulations.pdf";
+import roboRugbyGuidelinesPdf from "@/assets/documents/NIB_RoboRugby_Guidelines.pdf";
 
 export type TrackType = "round1" | "round2" | "roborugby";
 
@@ -548,78 +551,207 @@ const Registration = () => {
             </button>
           </motion.div>
 
-          {/* Official Consent Form Showcase Banner */}
+          {/* Official Documents & Guidelines (Consent Form + Track Guidelines in One Row) */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="mb-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-card via-card/90 to-background border-2 border-secondary/40 shadow-xl relative overflow-hidden"
+            className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4"
           >
-            <div className="absolute top-0 right-0 w-72 h-72 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
+            {/* CARD 1: Official Participant Consent Form (Lucknow Grand Finale) */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-card via-card/90 to-background border-2 border-secondary/40 shadow-lg flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-              <div className="flex items-start gap-4">
-                <div className="p-3.5 rounded-2xl bg-secondary/15 text-secondary border border-secondary/30 shrink-0 shadow-inner">
-                  <FileText className="w-7 h-7" />
-                </div>
-                <div>
-                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                    <span className="font-bold text-foreground text-base sm:text-lg">
-                      Official Participant Consent Form 2026
-                    </span>
+              <div className="relative z-10">
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="p-2 rounded-xl bg-secondary/15 text-secondary border border-secondary/30 shrink-0">
+                      <FileText className="w-5 h-5" />
+                    </div>
                     <span className="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-secondary/20 text-secondary border border-secondary/30 uppercase tracking-wide">
                       Lucknow Grand Finale
                     </span>
-                    {(activeTrack === "round2" || activeTrack === "roborugby") ? (
-                      <span className="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-500 border border-amber-500/30 uppercase tracking-wide">
-                        Mandatory
-                      </span>
-                    ) : (
-                      <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
-                        Finale Document
-                      </span>
-                    )}
                   </div>
-                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                    All student participants attending the Grand Finale in <strong className="text-foreground">Lucknow on 20th December 2026</strong> must have this consent form filled and signed by their parent/guardian and school authority. Please download, print, get it signed, and carry the physical copy to the venue on event day.
-                  </p>
+                  {(activeTrack === "round2" || activeTrack === "roborugby") ? (
+                    <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-500 border border-amber-500/30 uppercase tracking-wide">
+                      Mandatory
+                    </span>
+                  ) : (
+                    <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                      Finale Document
+                    </span>
+                  )}
                 </div>
+
+                <h3 className="font-bold text-foreground text-base sm:text-lg mb-1.5">
+                  Participant Consent Form 2026
+                </h3>
+
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
+                  Mandatory form to be filled and signed by parents/guardians and school authority for all students traveling to the Grand Finale in <strong className="text-foreground">Lucknow on 20th Dec 2026</strong>.
+                </p>
               </div>
 
-              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0 w-full md:w-auto">
+              <div className="relative z-10 flex items-center gap-2 pt-3 border-t border-border/60">
                 <a
-                  href="/documents/ConsentForm2026.pdf"
+                  href={consentFormPdf}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto"
+                  className="flex-1"
                 >
                   <Button
                     type="button"
                     variant="outline"
                     size="sm"
-                    className="w-full sm:w-auto border-border hover:bg-muted text-xs font-semibold h-10 px-4 cursor-pointer"
+                    className="w-full text-xs h-9 border-border hover:bg-muted font-medium cursor-pointer"
                   >
-                    <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
+                    <ExternalLink className="w-3.5 h-3.5 mr-1" />
                     Preview Form
                   </Button>
                 </a>
-
                 <a
-                  href="/documents/ConsentForm2026.pdf"
+                  href={consentFormPdf}
                   download="NIB_ConsentForm_2026.pdf"
-                  className="w-full sm:w-auto"
+                  className="flex-1"
                 >
                   <Button
                     type="button"
                     size="sm"
-                    className="w-full sm:w-auto bg-secondary text-secondary-foreground hover:bg-secondary/90 text-xs font-bold h-10 px-4 shadow-md cursor-pointer"
+                    className="w-full text-xs h-9 bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold shadow-sm cursor-pointer"
                   >
-                    <Download className="w-3.5 h-3.5 mr-1.5" />
-                    Download PDF
+                    <Download className="w-3.5 h-3.5 mr-1" />
+                    Download Form
                   </Button>
                 </a>
               </div>
             </div>
+
+            {/* CARD 2: Either Robo Rugby Guidelines (for Robo Rugby track only) OR General Rules (for R1/R2) */}
+            {activeTrack === "roborugby" ? (
+              /* ROBO RUGBY SELECTION ONLY: Robo Rugby Guidelines */
+              <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-card via-card/90 to-background border-2 border-amber-500/50 shadow-lg shadow-amber-500/5 flex flex-col justify-between relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <div className="flex items-center gap-2">
+                      <div className="p-2 rounded-xl bg-amber-500/15 text-amber-400 border border-amber-500/30 shrink-0">
+                        <Swords className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 uppercase tracking-wide">
+                        Robo Rugby Guidelines
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">
+                      Combat Arena Specs
+                    </span>
+                  </div>
+
+                  <h3 className="font-bold text-foreground text-base sm:text-lg mb-1.5">
+                    Robo Rugby Rules & Bot Specifications
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
+                    Complete bot engineering constraints (550×550×650mm, max 20kg), weapon specifications, arena gameplay, fouls, and match scoring rules.
+                  </p>
+                </div>
+
+                <div className="relative z-10 flex items-center gap-2 pt-3 border-t border-border/60">
+                  <a
+                    href={roboRugbyGuidelinesPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      className="w-full text-xs h-9 border-border hover:bg-muted font-medium cursor-pointer"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5 mr-1" />
+                      Preview Specs
+                    </Button>
+                  </a>
+                  <a
+                    href={roboRugbyGuidelinesPdf}
+                    download="NIB_RoboRugby_Guidelines.pdf"
+                    className="flex-1"
+                  >
+                    <Button
+                      type="button"
+                      size="sm"
+                      className="w-full text-xs h-9 bg-amber-500 text-black hover:bg-amber-400 font-bold shadow-sm cursor-pointer"
+                    >
+                      <Download className="w-3.5 h-3.5 mr-1" />
+                      Download Specs
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            ) : (
+              /* ROUND 1 & ROUND 2: Future Innovators General Rules & Regulations */
+              <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-card via-card/90 to-background border-2 border-primary/40 shadow-lg shadow-primary/5 flex flex-col justify-between relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <div className="flex items-center gap-2">
+                      <div className="p-2 rounded-xl bg-primary/15 text-primary border border-primary/30 shrink-0">
+                        <FileText className="w-5 h-5" />
+                      </div>
+                      <span className="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/25 uppercase tracking-wide">
+                        Future Innovators
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                      Junior & Senior
+                    </span>
+                  </div>
+
+                  <h3 className="font-bold text-foreground text-base sm:text-lg mb-1.5">
+                    General Rules & Regulations
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
+                    Official rulebook, project evaluation standards, device policy, and code of conduct for all participating teams in Round 1 and Round 2.
+                  </p>
+                </div>
+
+                <div className="relative z-10 flex items-center gap-2 pt-3 border-t border-border/60">
+                  <a
+                    href={generalRulesPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      className="w-full text-xs h-9 border-border hover:bg-muted font-medium cursor-pointer"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5 mr-1" />
+                      Preview Rules
+                    </Button>
+                  </a>
+                  <a
+                    href={generalRulesPdf}
+                    download="NIB_General_Rules_and_Regulations.pdf"
+                    className="flex-1"
+                  >
+                    <Button
+                      type="button"
+                      size="sm"
+                      className="w-full text-xs h-9 bg-primary text-primary-foreground hover:bg-primary/90 font-bold shadow-sm cursor-pointer"
+                    >
+                      <Download className="w-3.5 h-3.5 mr-1" />
+                      Download Rules
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            )}
           </motion.div>
 
           <motion.div
@@ -698,20 +830,30 @@ const Registration = () => {
                       )}
                     />
 
-                    {/* Consent Form Reminder for Round 2 */}
+                    {/* Consent Form & Rules Reminder for Round 2 */}
                     <div className="pt-3 border-t border-secondary/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 text-xs bg-secondary/5 -mx-5 -mb-5 sm:-mx-6 sm:-mb-6 p-4 rounded-b-2xl">
                       <div className="flex items-center gap-2 text-foreground font-medium">
                         <FileText className="w-4 h-4 text-secondary shrink-0" />
                         <span>Signed <strong>Consent Form 2026</strong> required on 20th Dec at Lucknow venue</span>
                       </div>
-                      <a
-                        href="/documents/ConsentForm2026.pdf"
-                        download="NIB_ConsentForm_2026.pdf"
-                        className="inline-flex items-center gap-1.5 text-secondary hover:underline font-bold"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        Download Form
-                      </a>
+                      <div className="flex items-center gap-3 shrink-0">
+                        <a
+                          href={generalRulesPdf}
+                          download="NIB_General_Rules_and_Regulations.pdf"
+                          className="inline-flex items-center gap-1 text-primary hover:underline font-semibold"
+                        >
+                          <Download className="w-3 h-3" />
+                          Rules PDF
+                        </a>
+                        <a
+                          href={consentFormPdf}
+                          download="NIB_ConsentForm_2026.pdf"
+                          className="inline-flex items-center gap-1 text-secondary hover:underline font-bold"
+                        >
+                          <Download className="w-3 h-3" />
+                          Consent Form
+                        </a>
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -820,19 +962,29 @@ const Registration = () => {
                       </span>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-secondary/10 border border-secondary/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+                    <div className="p-3.5 rounded-xl bg-secondary/10 border border-secondary/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 text-xs">
                       <div className="flex items-center gap-2 text-foreground font-medium">
                         <FileText className="w-4 h-4 text-secondary shrink-0" />
                         <span>All combat bot drivers must carry the signed <strong>Consent Form 2026</strong></span>
                       </div>
-                      <a
-                        href="/documents/ConsentForm2026.pdf"
-                        download="NIB_ConsentForm_2026.pdf"
-                        className="inline-flex items-center gap-1.5 text-secondary hover:underline font-bold shrink-0"
-                      >
-                        <Download className="w-3.5 h-3.5" />
-                        Download Form
-                      </a>
+                      <div className="flex items-center gap-3 shrink-0">
+                        <a
+                          href={roboRugbyGuidelinesPdf}
+                          download="NIB_RoboRugby_Guidelines.pdf"
+                          className="inline-flex items-center gap-1 text-amber-400 hover:underline font-semibold"
+                        >
+                          <Download className="w-3 h-3" />
+                          Bot Guidelines
+                        </a>
+                        <a
+                          href={consentFormPdf}
+                          download="NIB_ConsentForm_2026.pdf"
+                          className="inline-flex items-center gap-1 text-secondary hover:underline font-bold"
+                        >
+                          <Download className="w-3 h-3" />
+                          Consent Form
+                        </a>
+                      </div>
                     </div>
                   </div>
                 )}
