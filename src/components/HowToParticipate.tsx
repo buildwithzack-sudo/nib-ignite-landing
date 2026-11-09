@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { FileText, CheckCircle2, Trophy, Calendar, MapPin, ArrowRight, Sparkles, Laptop } from "lucide-react";
+import { FileText, CheckCircle2, Trophy, Calendar, MapPin, ArrowRight, Sparkles, Laptop, Swords, Award } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
@@ -12,16 +12,17 @@ const stages = [
     badgeColor: "bg-primary/20 text-primary border-primary/30",
     icon: Laptop,
     title: "Online Idea Submission",
-    date: "Last Date: 5th November 2026",
+    date: "Last Date: 22nd November 2026",
     dateIcon: Calendar,
     description:
-      "Submit your project idea, problem statement, and proposed technical solution online. Participation is open to all eligible students.",
+      "Submit your project idea, problem statement, and proposed technical solution online under the theme 'Society Welfare'. Participation is open to all eligible students.",
     keyPoints: [
-      "100% online submission",
+      "Theme: Society Welfare",
+      "Round 1 Fee: ₹100 per team",
+      "100% online idea submission",
       "Judged purely on idea merit & innovation",
-      "No physical travel required for Round 1",
     ],
-    highlight: "Deadline: 5th Nov",
+    highlight: "Deadline: 22nd Nov",
   },
   {
     stage: "Evaluation",
@@ -29,7 +30,7 @@ const stages = [
     badgeColor: "bg-amber-500/20 text-amber-500 border-amber-500/30",
     icon: CheckCircle2,
     title: "Result Declaration",
-    date: "7th November 2026",
+    date: "25th November 2026",
     dateIcon: Calendar,
     description:
       "The expert evaluation jury reviews all submitted ideas. Shortlisted teams advancing to the physical round in Lucknow will be declared.",
@@ -38,7 +39,7 @@ const stages = [
       "Shortlisted teams announced publicly",
       "Official invitations & guidelines issued",
     ],
-    highlight: "Results on 7th Nov",
+    highlight: "Results on 25th Nov",
   },
   {
     stage: "Round 2",
@@ -46,16 +47,62 @@ const stages = [
     badgeColor: "bg-secondary/20 text-secondary border-secondary/30",
     icon: Trophy,
     title: "Grand Finale in Lucknow",
-    date: "29th November 2026",
+    date: "20th December 2026",
     dateIcon: MapPin,
     description:
       "Selected teams travel to Lucknow to bring their physical working project / prototype for live presentation & demonstration before national judges.",
     keyPoints: [
-      "Physical event in Lucknow",
-      "Bring & demonstrate working project",
-      "Compete for trophies & cash prizes up to ₹25,000",
+      "Physical event in Lucknow (LKO)",
+      "Round 2 Fee: ₹1,500 (for shortlisted teams)",
+      "Robo Rugby teams enter directly (No Round 1 needed)",
+      "Compete for trophies & ₹50,000 cash prizes",
     ],
-    highlight: "Finale: 29th Nov",
+    highlight: "Finale: 20th Dec",
+  },
+];
+
+const evaluationCriteria = [
+  {
+    sn: 1,
+    title: "Innovation & Originality",
+    marks: "20 Marks",
+    description: "Novelty of the concept, unique perspective, and creative distinction from existing solutions.",
+  },
+  {
+    sn: 2,
+    title: "Social Impact & Public Welfare",
+    marks: "20 Marks",
+    description: "Alignment with the 'Society Welfare' theme, direct positive community benefit, and meaningful real-world utility.",
+  },
+  {
+    sn: 3,
+    title: "Problem Identification & Understanding",
+    marks: "15 Marks",
+    description: "Clarity in defining the root problem, depth of background research, and identification of affected stakeholders.",
+  },
+  {
+    sn: 4,
+    title: "Practicality & Feasibility",
+    marks: "15 Marks",
+    description: "Viability of implementation, realistic resource requirements, and ease of deployment in real-world scenarios.",
+  },
+  {
+    sn: 5,
+    title: "Technical Application & Understanding",
+    marks: "10 Marks",
+    description: "Sound grasp and practical application of relevant technologies, hardware, software, sensors, or algorithms.",
+  },
+  {
+    sn: 6,
+    title: "Creativity & Problem-Solving Approach",
+    marks: "10 Marks",
+    description: "Ingenuity in overcoming technical challenges, thoughtful design trade-offs, and critical problem-solving.",
+  },
+  {
+    sn: 7,
+    title: "Idea Explanation & Presentation",
+    marks: "10 Marks",
+    description: "Structure, clarity, persuasiveness, and coherence of the written idea submission and technical description.",
   },
 ];
 
@@ -148,6 +195,77 @@ export const HowToParticipate = () => {
           ))}
         </div>
 
+        {/* Round 1 Judgement & Evaluation Criteria */}
+        <motion.div
+          id="judgement-criteria"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="scroll-mt-28 mb-16 max-w-5xl mx-auto"
+        >
+          <div className="bg-card border border-border rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 pb-6 border-b border-border/70">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-3">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>Jury Scoring Matrix</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
+                  Overall Judgement Criteria
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground mt-1 max-w-2xl">
+                  All projects are evaluated objectively by our expert jury across these 7 core parameters throughout the competition — from Round 1 idea shortlisting to the Grand Finale live demonstration in Lucknow.
+                </p>
+              </div>
+
+              <div className="shrink-0 flex items-center gap-3 bg-primary/10 border border-primary/20 px-5 py-3 rounded-2xl">
+                <div className="text-right">
+                  <div className="text-[11px] uppercase tracking-wider font-semibold text-muted-foreground">Total Weightage</div>
+                  <div className="text-2xl font-black text-primary">100 Marks</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Criteria Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {evaluationCriteria.map((item) => (
+                <div
+                  key={item.sn}
+                  className="p-4 sm:p-5 rounded-2xl bg-background/60 border border-border/80 hover:border-primary/40 transition-all duration-200 flex flex-col justify-between group"
+                >
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-6 h-6 rounded-lg bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">
+                        {item.sn}
+                      </span>
+                      <h4 className="font-semibold text-foreground text-sm sm:text-base group-hover:text-primary transition-colors">
+                        {item.title}
+                      </h4>
+                    </div>
+                    <span className="shrink-0 px-2.5 py-1 rounded-full bg-primary/15 border border-primary/30 text-primary font-bold text-xs whitespace-nowrap">
+                      {item.marks}
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-muted-foreground pl-8">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom summary note */}
+            <div className="mt-6 pt-4 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                <span>Theme Focus: <strong>"Society Welfare"</strong> carries high weightage (Social Impact & Innovation = 40% combined).</span>
+              </span>
+              <span className="text-foreground/70 font-medium">Applies to Round 1 & Grand Finale (20th Dec 2026)</span>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Detailed Explanation / Callout Box */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -163,9 +281,26 @@ export const HowToParticipate = () => {
               How the Selection Process Works
             </h3>
 
-            <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
-              Participation begins with the <strong className="text-foreground">online idea submission round</strong> closing on <strong className="text-primary">5th November 2026</strong>. Our evaluation panel will review all ideas and announce the results on <strong className="text-primary">7th November 2026</strong>. Only the selected teams will advance to the second round, which will happen physically in <strong className="text-secondary font-semibold">Lucknow on 29th November 2026</strong>. Selected teams will bring their physical working project to Lucknow to compete for the national title!
+            <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6">
+              Participation begins with the <strong className="text-foreground">online idea submission round</strong> closing on <strong className="text-primary">22nd November 2026</strong> under the theme <strong className="text-foreground">"Society Welfare"</strong> (Round 1 Fee: ₹100). Our evaluation panel will review all ideas and announce the results on <strong className="text-primary">25th November 2026</strong>. Only the selected teams will advance to Round 2 (Round 2 Fee: ₹1,500), which will happen physically in <strong className="text-secondary font-semibold">Lucknow on 20th December 2026</strong>. Selected teams will bring their physical working project to Lucknow to compete for the national title and ₹50,000 cash prizes!
             </p>
+
+            <div className="max-w-2xl mx-auto mb-8 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-left flex items-start gap-3 shadow-sm">
+              <span className="p-2 rounded-xl bg-amber-500/20 text-amber-400 shrink-0 mt-0.5">
+                <Swords className="w-5 h-5" />
+              </span>
+              <div>
+                <h4 className="font-bold text-foreground text-sm sm:text-base flex items-center gap-2">
+                  <span>Fast-Track for Robo Rugby</span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30 uppercase">
+                    Direct Finale Entry
+                  </span>
+                </h4>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed">
+                  Since Robo Rugby bot dimensions and arena match rules are standardized, participants <strong>bypass the Round 1 online idea submission</strong>. Build your bot to specifications and participate directly in the Lucknow Grand Finale on 20th December (Registration Fee: ₹1,500)!
+                </p>
+              </div>
+            </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button

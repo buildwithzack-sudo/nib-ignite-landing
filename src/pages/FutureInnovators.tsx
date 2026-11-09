@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, ArrowRight } from "lucide-react";
+import { ArrowLeft, Calendar, Users, Trophy, AlertCircle, ArrowRight, Award, Sparkles, FileText, Download, ExternalLink } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import consentFormPdf from "@/assets/documents/ConsentForm2026.pdf";
+import generalRulesPdf from "@/assets/documents/NIB_General_Rules_Regulations.pdf";
 
 export default function FutureInnovators() {
   const navigate = useNavigate();
@@ -33,19 +35,70 @@ export default function FutureInnovators() {
             <Card className="p-6">
               <Calendar className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Round 1 Deadline</h3>
-              <p className="text-muted-foreground">November 5th, 2026</p>
+              <p className="text-muted-foreground">November 22nd, 2026</p>
             </Card>
             <Card className="p-6">
               <Trophy className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Round 2 Finale</h3>
-              <p className="text-muted-foreground">November 29th, 2026</p>
+              <p className="text-muted-foreground">December 20th, 2026 (Lucknow)</p>
             </Card>
             <Card className="p-6">
               <Users className="h-8 w-8 text-primary mb-3" />
-              <h3 className="font-semibold mb-2">Categories</h3>
-              <p className="text-muted-foreground">Junior (4-7) & Senior (8-12)</p>
+              <h3 className="font-semibold mb-2">Categories & Theme</h3>
+              <p className="text-muted-foreground">Junior (4-7) & Senior (8-12) • Theme: Society Welfare</p>
             </Card>
           </div>
+
+          {/* Official Documents & Downloads */}
+          <Card className="p-6 sm:p-8 mb-8 bg-card border-primary/30 shadow-md">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex items-start gap-3.5">
+                <div className="p-3 bg-primary/10 rounded-xl text-primary border border-primary/20 shrink-0">
+                  <FileText className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-1">Official Event Documents & Guidelines</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+                    Download the official Future Innovators rulebook and the participant consent form required for the Lucknow Grand Finale.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0 w-full md:w-auto">
+                <a
+                  href={generalRulesPdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <Button variant="outline" size="sm" className="w-full sm:w-auto text-xs h-9 cursor-pointer">
+                    <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
+                    Preview Rules
+                  </Button>
+                </a>
+                <a
+                  href={generalRulesPdf}
+                  download="NIB_General_Rules_and_Regulations.pdf"
+                  className="w-full sm:w-auto"
+                >
+                  <Button size="sm" className="w-full sm:w-auto text-xs h-9 font-semibold bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer">
+                    <Download className="w-3.5 h-3.5 mr-1.5" />
+                    Rules & Regs (PDF)
+                  </Button>
+                </a>
+                <a
+                  href={consentFormPdf}
+                  download="NIB_ConsentForm_2026.pdf"
+                  className="w-full sm:w-auto"
+                >
+                  <Button size="sm" variant="outline" className="w-full sm:w-auto text-xs h-9 font-semibold border-secondary/50 text-secondary hover:bg-secondary/10 cursor-pointer">
+                    <Download className="w-3.5 h-3.5 mr-1.5" />
+                    Consent Form (PDF)
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </Card>
 
           <Card className="p-8 mb-8">
             <h2 className="text-3xl font-bold mb-6">Structure</h2>
@@ -54,15 +107,15 @@ export default function FutureInnovators() {
             </p>
             <div className="space-y-4">
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 1 – Online Idea Submission (Deadline: Nov 5, Results: Nov 7)</h3>
+                <h3 className="font-bold text-xl mb-2">Round 1 – Online Idea Submission (Deadline: Nov 22, Results: Nov 25)</h3>
                 <p className="text-muted-foreground">
-                  Teams submit their problem statement, proposed solution, and technology online. Selection to the next round is purely based on the idea.
+                  Teams submit their problem statement, proposed solution, and technology online under the theme <strong>"Society Welfare"</strong> (Round 1 Fee: ₹100). Selection to the next round is purely based on the idea merit.
                 </p>
               </div>
               <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 2 – Physical Finale in Lucknow (November 29th, 2026)</h3>
+                <h3 className="font-bold text-xl mb-2">Round 2 – Physical Finale in Lucknow (December 20th, 2026)</h3>
                 <p className="text-muted-foreground">
-                  Shortlisted teams travel to Lucknow to bring and showcase their physical working project and working prototype before judges.
+                  Shortlisted teams travel to Lucknow to bring and showcase their physical working project and working prototype before judges (Round 2 Fee: ₹1,500).
                 </p>
               </div>
               <div className="border-l-4 border-primary pl-4">
@@ -71,6 +124,106 @@ export default function FutureInnovators() {
                   Top teams present their solutions at National Innovators Battle before a panel of judges, where the winners will be announced.
                 </p>
               </div>
+            </div>
+          </Card>
+
+          <Card className="p-8 mb-8 border-primary/30">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold mb-2">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>Judgement Matrix</span>
+                </div>
+                <h2 className="text-3xl font-bold">Overall Judgement Criteria</h2>
+              </div>
+              <div className="bg-primary/10 border border-primary/20 px-4 py-2 rounded-xl text-right shrink-0">
+                <span className="text-xs text-muted-foreground block font-medium">Total Weightage</span>
+                <span className="text-2xl font-black text-primary">100 Marks</span>
+              </div>
+            </div>
+
+            <p className="text-muted-foreground mb-6">
+              All participating projects are evaluated by our expert jury panel across the following 7 parameters throughout the competition (governing both Round 1 online shortlisting and the Grand Finale live demonstration in Lucknow):
+            </p>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="border-b border-border text-sm text-foreground/80 font-semibold bg-muted/30">
+                    <th className="py-3 px-4">#</th>
+                    <th className="py-3 px-4">Evaluation Criteria</th>
+                    <th className="py-3 px-4 text-right">Weightage</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/60 text-sm">
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">01</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Innovation & Originality</span>
+                      <span className="text-xs text-muted-foreground">Novelty of the concept, unique perspective, and distinction from existing solutions.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">20 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">02</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Social Impact & Public Welfare</span>
+                      <span className="text-xs text-muted-foreground">Alignment with the "Society Welfare" theme and meaningful real-world community benefits.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">20 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">03</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Problem Identification & Understanding</span>
+                      <span className="text-xs text-muted-foreground">Clarity in defining the root problem and understanding affected communities.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">15 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">04</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Practicality & Feasibility</span>
+                      <span className="text-xs text-muted-foreground">Feasibility of execution, practical resource demands, and realistic deployment.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">15 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">05</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Technical Application & Understanding</span>
+                      <span className="text-xs text-muted-foreground">Appropriate selection and technical soundness of components, hardware, or code.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">10 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">06</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Creativity & Problem-Solving Approach</span>
+                      <span className="text-xs text-muted-foreground">Ingenious workarounds, design trade-offs, and critical engineering mindset.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">10 Marks</td>
+                  </tr>
+                  <tr className="hover:bg-muted/20">
+                    <td className="py-3.5 px-4 font-semibold text-muted-foreground">07</td>
+                    <td className="py-3.5 px-4">
+                      <span className="font-semibold text-foreground block">Idea Explanation & Presentation</span>
+                      <span className="text-xs text-muted-foreground">Clarity, coherence, and quality of the written submission and technical documentation.</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right font-bold text-primary whitespace-nowrap">10 Marks</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr className="border-t-2 border-primary/30 font-bold bg-primary/5">
+                    <td className="py-3.5 px-4" colSpan={2}>
+                      <span className="text-foreground">Total Cumulative Score</span>
+                    </td>
+                    <td className="py-3.5 px-4 text-right text-primary text-base">
+                      100 Marks
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
             </div>
           </Card>
 

@@ -7,8 +7,8 @@ const rewards = [
   {
     icon: Trophy,
     title: "Cash Prizes",
-    amount: "Upto ₹25,000",
-    description: "Substantial cash rewards for winners across all categories",
+    amount: "₹50,000",
+    description: "Grand cash prizes worth ₹50,000 for winners across categories",
     color: "primary",
   },
   {
@@ -50,7 +50,7 @@ export const Rewards = () => {
             Prizes & <span className="text-gradient">Rewards</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-2">
-            Compete for exciting rewards and recognition at the national level
+            Compete for ₹50,000 in cash prizes and national recognition
           </p>
         </motion.div>
 
@@ -96,7 +96,7 @@ export const Rewards = () => {
               Win Big at NIB 2026!
             </h3>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-              Every participant receives a certificate of participation. Winners take home cash prizes, 
+              Every participant receives a certificate of participation. Winners take home cash prizes worth ₹50,000, 
               medals, and the pride of national recognition. Multiple awards across different categories!
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm">
