@@ -250,8 +250,8 @@ export const Navbar = () => {
 
               {/* Event Quick Notice */}
               <div className="pt-2 pb-1 border-t border-border/40 text-center">
-                <p className="text-[11px] text-muted-foreground">
-                  Round 1 Online Deadline: <span className="text-primary font-semibold">22nd Nov 2026</span>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">
+                  Round 1: <span className="text-primary font-semibold">22nd Nov</span> • R2 Form: <span className="text-amber-500 font-semibold">17th Dec</span>
                   <br />
                   Grand Finale: <span className="text-secondary font-semibold">20th Dec 2026 (Lucknow)</span>
                 </p>

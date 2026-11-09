@@ -47,17 +47,18 @@ const stages = [
     badgeColor: "bg-secondary/20 text-secondary border-secondary/30",
     icon: Trophy,
     title: "Grand Finale in Lucknow",
-    date: "20th December 2026",
-    dateIcon: MapPin,
+    date: "Form Deadline: 17th Dec • Finale: 20th Dec 2026",
+    dateIcon: Calendar,
     description:
-      "Selected teams travel to Lucknow to bring their physical working project / prototype for live presentation & demonstration before national judges.",
+      "Selected teams complete form filling by 17th December and travel to Lucknow to bring their physical working project / prototype for live presentation & demonstration before national judges.",
     keyPoints: [
-      "Physical event in Lucknow (LKO)",
+      "Form Filling Last Date: 17th December 2026",
+      "Grand Finale Event: 20th December 2026 (Lucknow)",
       "Round 2 Fee: ₹1,500 (for shortlisted teams)",
       "Robo Rugby teams enter directly (No Round 1 needed)",
       "Compete for trophies & ₹50,000 cash prizes",
     ],
-    highlight: "Finale: 20th Dec",
+    highlight: "Form Deadline: 17th Dec • Finale: 20th Dec",
   },
 ];
 
@@ -282,7 +283,7 @@ export const HowToParticipate = () => {
             </h3>
 
             <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-6">
-              Participation begins with the <strong className="text-foreground">online idea submission round</strong> closing on <strong className="text-primary">22nd November 2026</strong> under the theme <strong className="text-foreground">"Society Welfare"</strong> (Round 1 Fee: ₹100). Our evaluation panel will review all ideas and announce the results on <strong className="text-primary">25th November 2026</strong>. Only the selected teams will advance to Round 2 (Round 2 Fee: ₹1,500), which will happen physically in <strong className="text-secondary font-semibold">Lucknow on 20th December 2026</strong>. Selected teams will bring their physical working project to Lucknow to compete for the national title and ₹50,000 cash prizes!
+              Participation begins with the <strong className="text-foreground">online idea submission round</strong> closing on <strong className="text-primary">22nd November 2026</strong> under the theme <strong className="text-foreground">"Society Welfare"</strong> (Round 1 Fee: ₹100). Our evaluation panel will review all ideas and announce the results on <strong className="text-primary">25th November 2026</strong>. Only the selected teams advance to Round 2 (Round 2 Fee: ₹1,500). Finalist teams must complete their registration form by <strong className="text-amber-500">17th December 2026</strong> and participate physically in <strong className="text-secondary font-semibold">Lucknow on 20th December 2026</strong>, bringing their physical working project to compete for the national title and ₹50,000 cash prizes!
             </p>
 
             <div className="max-w-2xl mx-auto mb-8 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-left flex items-start gap-3 shadow-sm">

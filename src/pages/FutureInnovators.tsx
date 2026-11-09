@@ -40,7 +40,7 @@ export default function FutureInnovators() {
             <Card className="p-6">
               <Trophy className="h-8 w-8 text-primary mb-3" />
               <h3 className="font-semibold mb-2">Round 2 Finale</h3>
-              <p className="text-muted-foreground">December 20th, 2026 (Lucknow)</p>
+              <p className="text-muted-foreground">December 20th, 2026 (Form Deadline: 17th Dec)</p>
             </Card>
             <Card className="p-6">
               <Users className="h-8 w-8 text-primary mb-3" />
@@ -113,9 +113,9 @@ export default function FutureInnovators() {
                 </p>
               </div>
               <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-bold text-xl mb-2">Round 2 – Physical Finale in Lucknow (December 20th, 2026)</h3>
+                <h3 className="font-bold text-xl mb-2">Round 2 – Physical Finale in Lucknow (Form Deadline: Dec 17, Finale: Dec 20, 2026)</h3>
                 <p className="text-muted-foreground">
-                  Shortlisted teams travel to Lucknow to bring and showcase their physical working project and working prototype before judges (Round 2 Fee: ₹1,500).
+                  Shortlisted teams complete registration by 17th December and travel to Lucknow to bring and showcase their physical working project before judges on 20th December (Round 2 Fee: ₹1,500).
                 </p>
               </div>
               <div className="border-l-4 border-primary pl-4">
