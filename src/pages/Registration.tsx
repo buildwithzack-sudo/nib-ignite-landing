@@ -120,9 +120,6 @@ const formSchema = z.object({
     if (!data.projectName || data.projectName.trim().length < 2) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Project name is required", path: ["projectName"] });
     }
-    if (!data.projectImage) {
-      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Please upload photo of physical working prototype", path: ["projectImage"] });
-    }
     // Mentor details required for Round 2:
     if (!data.mentorName || data.mentorName.trim().length < 2) {
       ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Mentor name is required for Round 2", path: ["mentorName"] });
@@ -233,6 +230,11 @@ const Registration = () => {
       setSelectedEvent("");
       form.setValue("category", undefined);
       setSelectedCategory("");
+    }
+
+    if (newTrack === "round2") {
+      form.setValue("projectImage", undefined);
+      form.clearErrors("projectImage");
     }
   };
 
@@ -464,11 +466,11 @@ const Registration = () => {
 
               {activeTrack === "round2" && (
                 <>
-                  <span className="px-3 py-1.5 rounded-full bg-secondary/15 border border-secondary/30 text-secondary text-xs sm:text-sm font-bold">
-                    Round 2 Grand Finale: 20th Dec 2026 (Lucknow)
+                  <span className="px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-500 text-xs sm:text-sm font-bold">
+                    Form Filling Last Date: 17th Dec 2026
                   </span>
-                  <span className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs sm:text-sm font-semibold">
-                    Shortlisted Teams Only
+                  <span className="px-3 py-1.5 rounded-full bg-secondary/15 border border-secondary/30 text-secondary text-xs sm:text-sm font-bold">
+                    Grand Finale: 20th Dec 2026 (Lucknow)
                   </span>
                   <span className="px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs sm:text-sm font-semibold">
                     Finale Fee: ₹1,500
@@ -530,7 +532,7 @@ const Registration = () => {
                 <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-secondary/20 text-secondary">₹1,500</span>
               </div>
               <div className="font-bold text-foreground text-base sm:text-lg">Round 2: Grand Finale</div>
-              <p className="text-xs text-muted-foreground mt-1">For shortlisted finalists traveling to Lucknow</p>
+              <p className="text-xs text-muted-foreground mt-1">Last Date: 17th Dec • Grand Finale: 20th Dec (Lucknow)</p>
             </button>
 
             <button
@@ -771,12 +773,17 @@ const Registration = () => {
                     transition={{ duration: 0.3 }}
                     className="p-5 sm:p-6 rounded-2xl bg-secondary/10 border-2 border-secondary/30 space-y-4"
                   >
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck className="w-5 h-5 text-secondary" />
-                      <h3 className="font-bold text-foreground text-base sm:text-lg">Round 1 Shortlist Verification</h3>
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck className="w-5 h-5 text-secondary" />
+                        <h3 className="font-bold text-foreground text-base sm:text-lg">Round 1 Shortlist Verification</h3>
+                      </div>
+                      <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-500 border border-amber-500/30">
+                        Form Filling Deadline: 17th Dec 2026
+                      </span>
                     </div>
                     <p className="text-xs sm:text-sm text-muted-foreground">
-                      Please enter your unique team credentials to confirm your qualification for the Lucknow Grand Finale.
+                      Please enter your unique team credentials to confirm your qualification for the Lucknow Grand Finale. Form filling must be completed by <strong className="text-foreground">17th December 2026</strong>.
                     </p>
 
                     <FormField
@@ -1610,46 +1617,46 @@ const Registration = () => {
                     </motion.div>
                   )}
 
-                  {/* Image Upload */}
-                  <FormField
-                    control={form.control}
-                    name="projectImage"
-                    render={({ field: { value, onChange, ...field } }) => (
-                      <FormItem>
-                        <FormLabel>
-                          {activeTrack === "round1" && "Project Photo or AI Visualization *"}
-                          {activeTrack === "round2" && "Photo of Physical Working Prototype *"}
-                          {activeTrack === "roborugby" && "Photo of Combat Bot (Optional)"}
-                        </FormLabel>
-                        <FormControl>
-                          <div className="flex flex-col gap-2">
-                            <Input
-                              type="file"
-                              accept="image/*"
-                              onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) onChange(file);
-                              }}
-                              {...field}
-                              className="cursor-pointer"
-                            />
-                            {value && (
-                              <p className="text-sm text-muted-foreground flex items-center gap-2">
-                                <Upload className="w-4 h-4 text-primary" />
-                                {value.name}
-                              </p>
-                            )}
-                          </div>
-                        </FormControl>
-                        <FormDescription>
-                          {activeTrack === "round1" && "Upload either a photo of your working project/prototype, or an AI-generated image visualizing your project idea (Max 10MB)."}
-                          {activeTrack === "round2" && "Upload an actual photograph of the physical working model/robot you will demonstrate in Lucknow."}
-                          {activeTrack === "roborugby" && "Upload a photo of your combat bot or CAD design if ready (Max 10MB)."}
-                        </FormDescription>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  {/* Image Upload: Required for Round 1, Optional for Robo Rugby, Omitted for Round 2 */}
+                  {activeTrack !== "round2" && (
+                    <FormField
+                      control={form.control}
+                      name="projectImage"
+                      render={({ field: { value, onChange, ...field } }) => (
+                        <FormItem>
+                          <FormLabel>
+                            {activeTrack === "round1" && "Project Photo or AI Visualization *"}
+                            {activeTrack === "roborugby" && "Photo of Combat Bot (Optional)"}
+                          </FormLabel>
+                          <FormControl>
+                            <div className="flex flex-col gap-2">
+                              <Input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => {
+                                  const file = e.target.files?.[0];
+                                  if (file) onChange(file);
+                                }}
+                                {...field}
+                                className="cursor-pointer"
+                              />
+                              {value && (
+                                <p className="text-sm text-muted-foreground flex items-center gap-2">
+                                  <Upload className="w-4 h-4 text-primary" />
+                                  {value.name}
+                                </p>
+                              )}
+                            </div>
+                          </FormControl>
+                          <FormDescription>
+                            {activeTrack === "round1" && "Upload either a photo of your working project/prototype, or an AI-generated image visualizing your project idea (Max 10MB)."}
+                            {activeTrack === "roborugby" && "Upload a photo of your combat bot or CAD design if ready (Max 10MB)."}
+                          </FormDescription>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  )}
                 </div>
 
                 {/* PAYMENT SECTION */}

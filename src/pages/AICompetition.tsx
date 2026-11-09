@@ -48,7 +48,7 @@ export default function AICompetition() {
             <Card className="p-6 bg-card border-border">
               <Trophy className="h-8 w-8 text-secondary mb-3" />
               <h3 className="font-semibold mb-1 text-foreground">Round 2 Finale</h3>
-              <p className="text-sm text-muted-foreground">December 20th, 2026 (Lucknow)</p>
+              <p className="text-sm text-muted-foreground">December 20th, 2026 (Form Deadline: 17th Dec)</p>
             </Card>
             <Card className="p-6 bg-card border-border">
               <Users className="h-8 w-8 text-primary mb-3" />
@@ -70,9 +70,9 @@ export default function AICompetition() {
                 </p>
               </div>
               <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-bold text-lg sm:text-xl mb-1 text-foreground">Round 2 – Grand Finale in Lucknow (December 20th, 2026)</h3>
+                <h3 className="font-bold text-lg sm:text-xl mb-1 text-foreground">Round 2 – Grand Finale in Lucknow (Form Deadline: Dec 17, Finale: Dec 20, 2026)</h3>
                 <p className="text-sm sm:text-base text-muted-foreground">
-                  Shortlisted teams travel to Lucknow to present and demonstrate their working AI models, applications, or prototypes before national judges and industry mentors (Round 2 Fee: ₹1,500).
+                  Shortlisted teams complete registration by 17th December and travel to Lucknow to present and demonstrate their working AI models, applications, or prototypes before national judges and industry mentors (Round 2 Fee: ₹1,500).
                 </p>
               </div>
             </div>

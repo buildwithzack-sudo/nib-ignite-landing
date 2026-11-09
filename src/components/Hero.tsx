@@ -131,7 +131,7 @@ export const Hero = () => {
                   <span className="px-2.5 py-0.5 rounded-full bg-secondary/20 text-secondary font-bold text-xs tracking-wider uppercase">
                     Round 2 • Physical
                   </span>
-                  <span className="text-xs text-secondary font-semibold">Lucknow</span>
+                  <span className="text-xs text-amber-500 font-semibold">Last Date: 17th Dec</span>
                 </div>
                 <h4 className="font-bold text-foreground text-base mb-1">Grand Finale on 20th Dec</h4>
 
@@ -141,7 +141,7 @@ export const Hero = () => {
                 </div>
 
                 <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-1">
-                  Selected teams from Round 1 travel to <strong className="text-foreground">Lucknow on 20th December</strong> to showcase their physical working project.
+                  Selected teams must complete registration by <strong className="text-foreground">17th December</strong> to showcase their physical working project in <strong className="text-foreground">Lucknow on 20th Dec</strong>.
                 </p>
 
                 {/* Judgement Criteria Link */}
@@ -226,8 +226,8 @@ export const Hero = () => {
             </div>
             <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
             <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-              <span className="font-medium">Finale: <span className="text-foreground font-semibold">20th Dec 2026</span></span>
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" />
+              <span className="font-medium">R2 Form: <span className="text-foreground font-semibold">17th Dec</span> • Finale: <span className="text-foreground font-semibold">20th Dec 2026</span></span>
             </div>
             <div className="hidden sm:block w-1 h-1 bg-muted-foreground rounded-full" />
             <div className="flex items-center gap-2">
