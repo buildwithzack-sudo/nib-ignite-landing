@@ -297,6 +297,13 @@ const Registration = () => {
         uploadedSelectionProofFileName = await uploadFileToVapor(values.selectionProof);
       }
 
+      // Choose target form based on track:
+      // Round 1 -> nib-event-form-9bty5b
+      // Round 2 & Robo Rugby (Lucknow Grand Finale) -> nib-event-form-lucknow-e7ekq6
+      const targetFormSlug = activeTrack === "round1"
+        ? "nib-event-form-9bty5b"
+        : "nib-event-form-lucknow-e7ekq6";
+
       const payload: Record<string, any> = {
         // Category
         "2de6b1f2-003d-4909-8855-7e9b3c1aa986": activeTrack === "roborugby" ? "Class 7-12" : (values.category || "Senior"),
@@ -334,17 +341,14 @@ const Registration = () => {
         "3c981ea4-ed40-4b59-8a6e-34a35eca92ef": values.mentorEmail || "",
         // Project Name
         "7bad9a93-4c7a-424b-a577-2155be0f6996": values.projectName || (activeTrack === "roborugby" ? "Robo Rugby Bot" : ""),
-        // Solution (Which Problem is Your Project Solving?)
-        "7acc294f-95e6-492e-9fda-478c0b116aaa": activeTrack === "round1" ? (values.aboutProject || "") : "",
-        // Curriculum (only for Round 1)
-        ...(activeTrack === "round1" && values.hasCurriculum
-          ? { "9bf2b8f1-3ded-4df0-a7ce-393ffd3f0e64": values.hasCurriculum }
-          : {}),
-        // Unique Team ID (OpnForm property: 68afaaa5-ba62-4abf-af0a-0cf6db9c53a3)
-        "68afaaa5-ba62-4abf-af0a-0cf6db9c53a3": values.uniqueTeamId || "",
         // Completion time
         "completion_time": completionTime,
       };
+
+      // Unique Team ID (for Round 2)
+      if (values.uniqueTeamId && activeTrack === "round2") {
+        payload["68afaaa5-ba62-4abf-af0a-0cf6db9c53a3"] = values.uniqueTeamId;
+      }
 
       // Payment screenshot
       if (uploadedPaymentFileName) {
@@ -356,17 +360,30 @@ const Registration = () => {
         payload["6338385c-3465-49ae-893b-7e39e638eed6"] = [uploadedProjectImageFileName];
       }
 
-      // R1 Selection Proof Screenshot (OpnForm property: 4db2fd34-9d99-4399-b6e1-15152dcb6a02)
-      if (uploadedSelectionProofFileName) {
+      // R1 Selection Proof Screenshot (for Round 2)
+      if (uploadedSelectionProofFileName && activeTrack === "round2") {
         payload["4db2fd34-9d99-4399-b6e1-15152dcb6a02"] = [uploadedSelectionProofFileName];
       }
 
-      // Scalability (for Senior in R1)
-      if (values.scalability && activeTrack === "round1") {
-        payload["999cd92b-c4b5-4fe7-a6c6-f6ba8e827145"] = values.scalability;
+      // Round 1 EXCLUSIVE Fields (only present in nib-event-form-9bty5b)
+      if (activeTrack === "round1") {
+        // Solution (Which Problem is Your Project Solving?)
+        if (values.aboutProject) {
+          payload["7acc294f-95e6-492e-9fda-478c0b116aaa"] = values.aboutProject;
+        }
+
+        // Scalability (for Senior in R1)
+        if (values.scalability) {
+          payload["999cd92b-c4b5-4fe7-a6c6-f6ba8e827145"] = values.scalability;
+        }
+
+        // Curriculum (only for Round 1)
+        if (values.hasCurriculum) {
+          payload["9bf2b8f1-3ded-4df0-a7ce-393ffd3f0e64"] = values.hasCurriculum;
+        }
       }
 
-      const response = await fetch("https://api.opnform.com/forms/nib-event-form-9bty5b/answer", {
+      const response = await fetch(`https://api.opnform.com/forms/${targetFormSlug}/answer`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
